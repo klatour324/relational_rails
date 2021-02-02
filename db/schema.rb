@@ -19,4 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_02_221111) do
     t.string "name"
   end
 
+  create_table "libraries", force: :cascade do |t|
+    t.string "name"
+  end
+
 end
