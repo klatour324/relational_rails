@@ -9,14 +9,13 @@ class LocationsController < ApplicationController
   def create
     location = Location.new({
       name: params[:location][:name],
-      population: params[:location][:population].to_i,
-      urban: (params[:location][:urban] == "on"),
-      created_at: Time.now,
-      updated_at: Time.now
+      population: params[:location][:population],
+      urban: params[:location][:urban],
+      created_at: params[:location][:created_at],
+      updated_at: params[:location][:updated_at]
       })
 
     location.save
-
     redirect_to '/locations'
   end
 
