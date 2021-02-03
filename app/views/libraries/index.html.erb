@@ -2,5 +2,5 @@
 <a href="/libraries/new">New Library</a>
 
 <% @libraries.each do |library| %>
-  <h3><%= library.name %></h3>
+  <h3><a href="/libraries/<%= library.id %>"><%= library.name %></a></h3>
 <% end %>
