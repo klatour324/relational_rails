@@ -8,9 +8,12 @@ class LibrariesController < ApplicationController
 
   def create
     library = Library.new({name: params[:library][:name]})
-    
+
     library.save
 
     redirect_to '/libraries'
+  end
+
+  def show
   end
 end
