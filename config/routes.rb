@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get '/locations', to: 'locations#index'
   get '/locations/new', to: 'locations#new'
   post '/locations', to: 'locations#create'
+  get '/locations/:id', to: 'locations#show'
 
   get '/libraries', to: 'libraries#index'
   get '/libraries/new', to: 'libraries#new'
   post '/libraries', to: 'libraries#create'
   get '/libraries/:id', to: 'libraries#show'
-
 end
