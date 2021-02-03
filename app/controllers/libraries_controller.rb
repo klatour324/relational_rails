@@ -15,5 +15,6 @@ class LibrariesController < ApplicationController
   end
 
   def show
+    @library = Library.find(params[:id])
   end
 end
