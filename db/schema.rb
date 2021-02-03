@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_02_03_052910) do
-
-# ActiveRecord::Schema.define(version: 2021_02_03_021559) do
-
+ActiveRecord::Schema.define(version: 2021_02_03_234539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_03_052910) do
     t.string "name"
     t.boolean "public"
     t.integer "years_opened"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|
