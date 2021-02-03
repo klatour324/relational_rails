@@ -13,4 +13,7 @@ class LocationsController < ApplicationController
 
     redirect_to '/locations'
   end
+
+  def show
+  end 
 end
