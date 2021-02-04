@@ -9,6 +9,8 @@
 <p><%= @location.created_at %></p>
 <h2>Updated at:</h2>
 <p><%= @location.created_at %></p>
+<h2>Bookstores</h2>
+<a href="/bookstores/">Check out all the bookstores in <%=@location.name%></a>
 <br>
 <a href="/locations/<%= @location.id %>/edit">Edit Location</a>
 <a><%= link_to "Delete", "/locations/#{@location.id}", method: :delete %></a>
