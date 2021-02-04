@@ -11,3 +11,4 @@
 <p><%= @location.created_at %></p>
 <br>
 <a href="/locations/<%= @location.id %>/edit">Edit Location</a>
+<a><%= link_to "Delete", "/locations/#{@location.id}", method: :delete %></a>

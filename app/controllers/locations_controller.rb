@@ -37,4 +37,9 @@ class LocationsController < ApplicationController
     location.save
     redirect_to "/locations/#{location.id}"
   end
+
+  def destroy
+    Location.destroy(params[:id])
+    redirect_to '/locations/'
+  end
 end
