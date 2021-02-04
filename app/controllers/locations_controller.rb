@@ -23,6 +23,16 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
+  def urban?
+    binding.pry
+    @location = Location.find(params[:id])
+    if @location == nil
+      false
+    else
+      true
+    end
+  end
+
   def edit
     @location = Location.find(params[:id])
   end
