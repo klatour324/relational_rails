@@ -22,4 +22,19 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
   end
+
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    location = Location.find(params[:id])
+    location.update({
+      name: params[:location][:name],
+      population: params[:location][:population],
+      urban: params[:location][:urban]
+      })
+    location.save
+    redirect_to "/locations/#{location.id}"
+  end
 end
