@@ -21,4 +21,21 @@ class LibrariesController < ApplicationController
   def show
     @library = Library.find(params[:id])
   end
+
+  def edit
+    @library = Library.find(params[:id])
+  end
+
+  def update
+    library = Library.find(params[:id])
+    library.update({
+      name: params[:library][:name],
+      public: params[:library][:public],
+      years_opened: params[:library][:years_opened]
+      })
+
+    library.save
+
+    redirect_to '/libraries/#{library.id}'
+  end
 end
