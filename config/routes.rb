@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   delete '/locations/:id', to: 'locations#destroy'
 
   get '/bookstores', to: 'bookstores#index'
+  get '/bookstores/new', to: 'bookstores#new'
+  post 'bookstores', to: 'bookstores#create'
 
   get '/libraries', to: 'libraries#index'
   get '/libraries/new', to: 'libraries#new'

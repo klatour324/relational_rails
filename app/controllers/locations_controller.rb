@@ -24,7 +24,6 @@ class LocationsController < ApplicationController
   end
 
   def urban?
-    binding.pry
     @location = Location.find(params[:id])
     if @location == nil
       false
