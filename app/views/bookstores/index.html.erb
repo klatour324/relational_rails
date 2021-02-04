@@ -1,0 +1,12 @@
+<h1>Bookstores in @location.nam </h1>
+
+<a href="/bookstores/new">New Location</a>
+<% @bookstores.each do |bookstore| %>
+  <h3><a href="/bookstores/<%= bookstore.id %>"><%= bookstore.name %></a></h3>
+  <h5>Number of books in stock:<h5>
+  <p><%= bookstore.inventory %><p>
+  <h5>Location:<h5>
+  <p><%= bookstore.location_id %><p>
+  <h5>Open to public?<h5>
+  <p><%= bookstore.open %><p>
+<% end %>
