@@ -10,9 +10,7 @@ class LocationsController < ApplicationController
     location = Location.new({
       name: params[:location][:name],
       population: params[:location][:population],
-      urban: params[:location][:urban],
-      created_at: params[:location][:created_at],
-      updated_at: params[:location][:updated_at]
+      urban: params[:location][:urban]
       })
 
     location.save
