@@ -2,10 +2,11 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <p>Edit</p>
-  <input type='text' name='library[name]' value="<%= @library.name %>"/><br/>
-  <input type='text' name='library[public]' value="<%= @library.public %>"/><br/>
-  <input type='text' name='library[years_opened]' value="<%= @library.years_opened %>"/><br/>
-  <input type='text' name='library[created_at]' value="<%= @library.created_at %>"/><br/>
-  <input type='text' name='library[updated_at]' value="<%= @library.updated_at %>"/><br/>
-  <input type='submit'/>
+  <label for="name">Library Name</label><br>
+  <input id='library_name' type='text' name='library[name]' value="<%= @library.name %>"/><br><br>
+  <label for="name">Public?</label><br>
+  <input id= 'a_checkbox' type='checkbox' name='library[public]' value="<%= @library.public? %>"/><br><br>
+  <label for="name">Years Opened</label><br>
+  <input id='years_opened' type='text' name='library[years_opened]' value="<%= @library.years_opened %>"/><br><br>
+  <input id='Submit' type='submit' />
 </form>

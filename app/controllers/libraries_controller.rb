@@ -36,6 +36,6 @@ class LibrariesController < ApplicationController
 
     library.save
 
-    redirect_to '/libraries/#{library.id}'
+    redirect_to "/libraries/#{library.id}"
   end
 end
