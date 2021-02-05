@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get '/libraries/:id', to: 'libraries#show'
   get '/libraries/:id/edit', to: 'libraries#edit'
   patch '/libraries/:id', to: 'libraries#update'
+  delete '/libraries/:id', to: 'libraries#destroy'
 end

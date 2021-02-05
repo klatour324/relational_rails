@@ -1,11 +1,11 @@
 <form action="/libraries/<%= @library.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
-  <p>Edit</p>
+  <p>Update Library:</p>
   <label for="name">Library Name</label><br>
   <input id='library_name' type='text' name='library[name]' value="<%= @library.name %>"/><br><br>
   <label for="name">Public?</label><br>
-  <input id= 'a_checkbox' type='checkbox' name='library[public]' value="<%= @library.public? %>"/><br><br>
+  <input id= 'a_checkbox' type='checkbox' name='library[public]' /><br><br>
   <label for="name">Years Opened</label><br>
   <input id='years_opened' type='text' name='library[years_opened]' value="<%= @library.years_opened %>"/><br><br>
   <input id='Submit' type='submit' />
