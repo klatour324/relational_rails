@@ -1,6 +1,6 @@
 class BookstoresController < ApplicationController
   def index
-    @bookstores = ["books"]
+    @bookstores = Bookstore.all
   end
 
   def new

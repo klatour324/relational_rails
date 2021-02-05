@@ -8,11 +8,11 @@ RSpec.describe "location_bookstores index page" do
       name: "Philadelphia",
       population: 15000000,
       urban: true})
-    bookstore_1 = BookStore.create({
+    bookstore_1 = Bookstore.create({
       name: "Harriett's Bookshop",
       inventory: 3000,
       open: true})
-    bookstore_2 = BookStore.create({
+    bookstore_2 = Bookstore.create({
       name: "Joseph Fox BookStop",
       inventory: 444,
       open: false})
@@ -33,7 +33,7 @@ RSpec.describe "location_bookstores index page" do
       name: "Philadelphia",
       population: 15000000,
       urban: true})
-    bookstore_2 = BookStore.create({
+    bookstore_2 = Bookstore.create({
       name: "Joseph Fox BookStop",
       inventory: 444,
       open: false})
