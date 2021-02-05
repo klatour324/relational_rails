@@ -12,13 +12,12 @@ RSpec.describe 'libraries creation page' do
     expect(page).to have_content('Enter a new Library:')
 
     fill_in('library_name', with: 'Chicago Public Library')
-    check('A Checkbox')
+    check('a_checkbox')
     fill_in('years_opened', with: 150)
 
-    click_button 'Submit'
+    click_button 'create_library'
 
     expect(current_path).to eq('/libraries')
     expect(page).to have_link('Chicago Public Library')
   end
-
 end
