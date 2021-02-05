@@ -26,6 +26,13 @@ class LibrariesController < ApplicationController
     @library = Library.find(params[:id])
   end
 
+  def public?
+    @libraries = Libraries.find(params[:id])
+    false if @libraries.public == nil
+
+    true
+  end
+
   def update
     library = Library.find(params[:id])
     library.update({
