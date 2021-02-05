@@ -1,0 +1,14 @@
+<h2><%= @location.name %></h2>
+
+<form action="/locations/<%= @location.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Update information below:</p>
+  <label for="name">Location Name</label><br>
+  <input type='text' name='location[name]' value="<%= @location.name %>" id='loc_name'/><br/>
+  <label for="name">Location Population</label><br>
+  <input type='integer' name='location[population]' value="<%= @location.population %>" id='loc_pop'</input><br/>
+  <label for="name">Urban?</label><br>
+  <input type='checkbox'name='location[urban]' id='urban?'</input><br/>
+  <input type='submit' id='submit'/>
+</form>

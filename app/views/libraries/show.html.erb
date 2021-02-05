@@ -2,7 +2,7 @@
 
 <h1><%= @library.name %></h1>
 <h3>Public?</h3>
-<h3><%= @library.public %></h3>
+<h3><%= @library.public? %></h3>
 <h3>Years Opened:</h3>
 <p><%= @library.years_opened %></p>
 <a href="/libraries/<%= @library.id %>/edit">Update Library</a>

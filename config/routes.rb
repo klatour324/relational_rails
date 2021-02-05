@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get '/locations/new', to: 'locations#new'
   post '/locations', to: 'locations#create'
   get '/locations/:id', to: 'locations#show'
+  get '/locations/:id/edit', to: 'locations#edit'
+  patch '/locations/:id', to: 'locations#update'
+  delete '/locations/:id', to: 'locations#destroy'
+
 
   get '/libraries', to: 'libraries#index'
   get '/libraries/new', to: 'libraries#new'
