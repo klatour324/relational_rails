@@ -25,14 +25,7 @@ class LibrariesController < ApplicationController
   def edit
     @library = Library.find(params[:id])
   end
-
-  def public?
-    @libraries = Libraries.find(params[:id])
-    false if @libraries.public == nil
-
-    true
-  end
-
+  
   def update
     library = Library.find(params[:id])
     library.update({
@@ -43,6 +36,11 @@ class LibrariesController < ApplicationController
 
     library.save
 
-    redirect_to '/libraries/#{library.id}'
+    redirect_to "/libraries/#{library.id}"
+  end
+
+  def destroy
+    Library.destroy(params[:id])
+    redirect_to '/libraries'
   end
 end
