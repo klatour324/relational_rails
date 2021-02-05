@@ -1,0 +1,9 @@
+<h1>All Bookstores</h1>
+
+<% @bookstores.each do |bookstore| %>
+  <h3><%= bookstore.name %></h3>
+  <h4>Books in stock:</h4>
+  <p><%= bookstore.inventory %></p>
+  <h4>Open?</h4>
+  <p><%= bookstore.open %></p>
+<% end %>
