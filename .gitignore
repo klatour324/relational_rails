@@ -25,3 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#Ignore files added by AM on 2/5
+.DS_Store
+/coverage
