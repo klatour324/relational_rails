@@ -23,8 +23,6 @@ RSpec.describe "location_bookstores index page" do
     expect(page).to have_content(bookstore_1.name)
     expect(page).to have_content(bookstore_1.inventory)
     expect(page).to have_content(bookstore_1.open)
-    expect(page).to have_content(bookstore_1.created_at)
-    expect(page).to have_content(bookstore_1.updated_at)
     expect(page).to have_no_content(bookstore_2.name)
   end
 
