@@ -1,0 +1,20 @@
+<a href="/bookstores">Bookstores</a>
+<br><br>
+<h1><%= @bookstore.name %></h1>
+<h2>Inventory:</h2>
+<p><%= @bookstore.inventory %></p>
+<h2>Open?</h2>
+<%if @bookstore.open == nil %>
+    <p><%= false %></p>
+    <% else %>
+    <p><%= true %></p>
+  <% end %>
+<h2>Created at:</h2>
+<p><%= @bookstore.created_at %></p>
+<h2>Updated at:</h2>
+<p><%= @bookstore.created_at %></p>
+<br>
+<a href="/bookstores/<%= @bookstore.id %>/edit">Update Bookstore</a>
+<br><br>
+
+<a><%= link_to "Delete", "/bookstores/#{@bookstore.id}", method: :delete %></a>

@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get '/bookstores', to: 'bookstores#index'
   get '/bookstores/new', to: 'bookstores#new'
   post 'bookstores', to: 'bookstores#create'
+  get '/bookstores/:id', to: 'bookstores#show'
+  get '/bookstores/:id/edit', to: 'bookstores#edit'
+  patch '/bookstores/:id', to: 'bookstores#update'
+  delete '/bookstores/:id', to: 'bookstores#destroy'
 
 
   get '/libraries', to: 'libraries#index'
