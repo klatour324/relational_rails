@@ -17,18 +17,36 @@ RSpec.describe "locations index page" do
     expect(page).to have_content(location_2.name)
   end
 
-  describe "locations individual location show page" do
-    it "can show all of the location's attributes" do
-      location_1 = Location.create({
-        name: "Philadelphia",
-        population: 15000000,
-        urban: true})
+  it "can click on a link to create a new record" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
 
-      visit "/locations/#{location_1.id}"
+    visit "/locations"
+    click_link('New Location')
+    expect(page).to have_content("Enter a new location:")
+  end
 
-      expect(page).to have_content(location_1.name)
-      expect(page).to have_content(location_1.population)
-      expect(page).to have_content(location_1.urban)
-    end
+  it "can create a new record" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
+
+    visit "/locations/new"
+
+    expect(page).to have_content("Location Name")
+    expect(page).to have_content("Location Population")
+    expect(page).to have_content("Urban?")
+
+    fill_in("loc_name", with: location_1.name)
+    fill_in("loc_pop", with: location_1.population)
+    check('urban?')
+
+    click_on("submit")
+
+    expect(page).to have_content("All Locations")
+    expect(page).to have_content("All Locations")
   end
 end
