@@ -9,4 +9,5 @@
   <% end %>
 <h3>Number of Pages:</h3>
 <p><%= @book.pages %></p>
-<a href="/books/<%= @book.id %>/edit">Update Book</a>
+<a href="/books/<%= @book.id %>/edit">Update Book</a><br><br>
+<a><%= link_to "Delete Book", "/books/#{@book.id}", method: :delete %></a>
