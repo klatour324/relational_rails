@@ -2,10 +2,10 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Enter a new Book:</p>
   <label for="name">Book Title</label><br/>
-  <input type="text" name='book[title]' /><br/>
+  <input id="book_title" type="text" name='book[title]' /><br/>
   <label for="name">Checked Out?</label><br/>
-  <input type="text" name='book[checked_out]' /><br/>
+  <input id="a_checkbox" type="checkbox" name='book[checked_out]' /><br/>
   <label for="name">Number of Pages</label><br/>
-  <input type="text" name="book[pages]" /><br/>
-  <input type="submit" />
+  <input id="pages" type="text" name="book[pages]" /><br/>
+  <input id="create_book" type="submit" value="Create Book" />
 </form>
