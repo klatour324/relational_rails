@@ -4,26 +4,30 @@ RSpec.describe "location_bookstores index page" do
   it "can see all associated bookstores and attributes" do
   #This test is set up to have bookstore1 added to location_1. bookstore_2
   #should be not be linked, and should confirm it is not on the page
-    location_1 = Location.create({
+    location_1 = Location.create! ({
       name: "Philadelphia",
       population: 15000000,
       urban: true})
-    bookstore_1 = Bookstore.create({
+    bookstore_1 = location_1.bookstores.create! ({
       name: "Harriett's Bookshop",
       inventory: 3000,
       open: true})
-    bookstore_2 = Bookstore.create({
+    bookstore_2 = location_1.bookstores.create! ({
       name: "Joseph Fox BookStop",
       inventory: 444,
       open: false})
 
     visit "/locations/#{location_1.id}/bookstores"
 
+    binding.pry
+
     expect(page).to have_content("Bookstores")
-    expect(page).to have_content(bookstore_1.name)
+    expect(page).to have_link(bookstore_1.name)
     expect(page).to have_content(bookstore_1.inventory)
     expect(page).to have_content(bookstore_1.open)
-    expect(page).to have_no_content(bookstore_2.name)
+    expect(page).to have_link(bookstore_2.name)
+    expect(page).to have_content(bookstore_2.inventory)
+    expect(page).to have_content(bookstore_2.open)
   end
 
   it "can create a new bookstore from the location bookstores index" do
@@ -31,7 +35,11 @@ RSpec.describe "location_bookstores index page" do
       name: "Philadelphia",
       population: 15000000,
       urban: true})
-    bookstore_2 = Bookstore.create({
+    bookstore_1 = location_1.bookstores.create({
+      name: "Harriett's Bookshop",
+      inventory: 3000,
+      open: true})
+    bookstore_2 = location_1.bookstores.create({
       name: "Joseph Fox BookStop",
       inventory: 444,
       open: false})
