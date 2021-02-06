@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'libraries update page' do
+RSpec.describe 'libraries update feature' do
   it 'can create update information about a library' do
     libraries_1 = Library.create({
                 name: "Chicago Public Library",

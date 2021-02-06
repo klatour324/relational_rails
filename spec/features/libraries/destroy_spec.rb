@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'libraries delete page' do
+RSpec.describe 'libraries delete feature' do
   it 'can delete a library' do
     libraries_1 = Library.create({
                 name: "Chicago Public Library",

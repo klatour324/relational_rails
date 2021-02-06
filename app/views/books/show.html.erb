@@ -1,0 +1,18 @@
+<a href="/books">Book Index</a>
+
+<h1><%= @book.title %></h1>
+<h3>Checked Out?</h3>
+  <%if @book.checked_out == nil %>
+    <p><%= false %></p>
+    <% else %>
+    <p><%= true %></p>
+  <% end %>
+<h3>Number of Pages:</h3>
+<p><%= @book.pages %></p>
+<h3>Created at:</h3>
+<p><%= @book.created_at %></p>
+<h3>Updated at:</h3>
+<p><%= @book.updated_at %></p>
+<br>
+<a href="/books/<%= @book.id %>/edit">Update Book</a><br><br>
+<a><%= link_to "Delete Book", "/books/#{@book.id}", method: :delete %></a>
