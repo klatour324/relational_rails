@@ -32,7 +32,7 @@ class LocationsController < ApplicationController
         population: params[:location][:population],
         urban: params[:location][:urban]
       })
-    
+
     location.save
     redirect_to "/locations/#{location.id}"
   end
@@ -40,5 +40,10 @@ class LocationsController < ApplicationController
   def destroy
     Location.destroy(params[:id])
     redirect_to '/locations/'
+  end
+
+  def bookstores
+    @location = Location.find(params[:location_id])
+    @location.bookstores
   end
 end
