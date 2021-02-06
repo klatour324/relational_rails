@@ -9,5 +9,10 @@
   <% end %>
 <h3>Years Opened:</h3>
 <p><%= @library.years_opened %></p>
+<h3>Created at:</h3>
+<p><%= @library.created_at %></p>
+<h3>Updated at:</h3>
+<p><%= @library.updated_at %></p>
+<br>
 <a href="/libraries/<%= @library.id %>/edit">Update Library</a><br><br>
 <a><%= link_to "Delete Library", "/libraries/#{@library.id}", method: :delete %></a>
