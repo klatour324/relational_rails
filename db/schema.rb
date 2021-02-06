@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_02_06_190652) do
     t.boolean "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_bookstores_on_location_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -50,4 +52,5 @@ ActiveRecord::Schema.define(version: 2021_02_06_190652) do
   end
 
   add_foreign_key "books", "libraries"
+  add_foreign_key "bookstores", "locations"
 end

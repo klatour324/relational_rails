@@ -1,0 +1,20 @@
+<a href="/locations">Locations</a>
+<br><br>
+<h1><%= @location.name %> Bookstores</h1>
+
+<% @location.bookstores.each do |bookstore| %>
+  <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
+  <h4>Inventory:</h4>
+  <p><%= bookstore.inventory %></p>
+  <h4>Open?</h4>
+  <%if bookstore.open == nil %>
+      <p><%= false %></p>
+      <% else %>
+      <p><%= true %></p>
+    <% end %>
+  <h4>Created at:</h4>
+  <p><%= bookstore.created_at %></p>
+  <h4>Updated at:</h4>
+  <p><%= bookstore.created_at %></p>
+  <br>
+<% end %>
