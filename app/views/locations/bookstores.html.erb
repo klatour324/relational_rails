@@ -3,8 +3,6 @@
 <h1><%= @location.name %> Bookstores</h1>
 
 <% @location.bookstores.each do |bookstore| %>
-
-
   <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
   <h4>Inventory:</h4>
   <p><%= bookstore.inventory %></p>

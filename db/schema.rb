@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_154030) do
+ActiveRecord::Schema.define(version: 2021_02_06_161634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_02_05_154030) do
     t.boolean "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_bookstores_on_location_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -38,4 +40,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_154030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "bookstores", "locations"
 end

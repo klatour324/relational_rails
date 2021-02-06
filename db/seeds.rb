@@ -9,8 +9,7 @@
 Location.destroy_all
 Bookstore.destroy_all
 
-philly = Location.create! ({name: "Philadelphia",
-  population: 1500000,urban: true})
+philly = Location.create! ({name: "Philadelphia",population: 1500000,urban: true})
 nyc = Location.create! ({name: "New York City",population: 8400000,urban: true})
 mtown = Location.create! ({name: "Middletown",population: 65000,urban: false})
 
