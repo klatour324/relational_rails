@@ -9,8 +9,11 @@ RSpec.describe "books show page" do
 
     visit "books/#{books_1.id}"
 
+    expect(page).to have_link("Book Index")
     expect(page).to have_content(books_1.title)
     expect(page).to have_content(books_1.checked_out)
     expect(page).to have_content(books_1.pages)
+    expect(page).to have_link("Update Book")
+    expect(page).to have_link("Delete Book")
   end
 end

@@ -13,11 +13,9 @@ RSpec.describe "books index page" do
 
   visit '/books'
 
-  expect(page).to  have_content(books_1.title)
-  expect(page).to  have_content(books_1.checked_out)
-  expect(page).to  have_content(books_1.pages)
-  expect(page).to  have_content(books_2.title)
-  expect(page).to  have_content(books_2.checked_out)
-  expect(page).to  have_content(books_2.pages)
+  expect(page).to have_content("All Books")
+  expect(page).to have_link("New Book")
+  expect(page).to  have_link(books_1.title)
+  expect(page).to  have_link(books_2.title)
   end
 end
