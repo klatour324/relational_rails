@@ -19,8 +19,6 @@ RSpec.describe "location_bookstores index page" do
 
     visit "/locations/#{location_1.id}/bookstores"
 
-    binding.pry
-
     expect(page).to have_content("Bookstores")
     expect(page).to have_link(bookstore_1.name)
     expect(page).to have_content(bookstore_1.inventory)
