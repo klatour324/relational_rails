@@ -1,2 +1,3 @@
 class Bookstore < ApplicationRecord
-end 
+  belongs_to :location
+end
