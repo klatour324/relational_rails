@@ -6,16 +6,16 @@ class BookstoresController < ApplicationController
   def new
   end
 
-  def create
-    bookstore = Bookstore.new({
-      name: params[:bookstore][:name],
-      inventory: params[:bookstore][:inventory],
-      open: params[:bookstore][:open]
-      })
-
-    bookstore.save
-    redirect_to '/bookstores'
-  end
+  # def create
+  #   bookstore = Bookstore.new({
+  #     name: params[:bookstore][:name],
+  #     inventory: params[:bookstore][:inventory],
+  #     open: params[:bookstore][:open]
+  #     })
+  #
+  #   bookstore.save
+  #   redirect_to '/bookstores'
+  # end
 
   def show
     @bookstore = Bookstore.find(params[:id])
