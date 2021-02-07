@@ -29,33 +29,16 @@ RSpec.describe "location_bookstores index page" do
     expect(page).to have_content(bookstore_2.open)
   end
 
-  it "can create a new bookstore from the location bookstores index" do
-    location_1 = Location.create({
+  it "can link to create a new bookstore page" do
+    location_1 = Location.create! ({
       name: "Philadelphia",
       population: 15000000,
       urban: true})
-    bookstore_1 = location_1.bookstores.create({
-      name: "Harriett's Bookshop",
-      inventory: 3000,
-      open: true})
-    bookstore_2 = location_1.bookstores.create({
-      name: "Joseph Fox BookStop",
-      inventory: 444,
-      open: false})
 
-    visit "/locations/#{location_1.id}/bookstores/new"
+    visit "/locations/#{location_1.id}/bookstores"
 
-    expect(page).to have_content("Bookstore Name")
-    expect(page).to have_content("Bookstore Inventory")
-    expect(page).to have_content("Open?")
+    click_on("New Bookstore")
 
-    fill_in("bs_name", with: bookstore_2.name)
-    fill_in("bs_pop", with: bookstore_2.inventory)
-    check('open?')
-
-    click_on("submit")
-
-    expect(page).to have_content("Bookstores")
-    expect(page).to have_content(bookstore_2.name)
+    expect(page).to have_content("Enter a new bookstore")
   end
 end

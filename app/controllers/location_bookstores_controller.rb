@@ -6,6 +6,7 @@ class LocationBookstoresController < ApplicationController
   end
 
   def new
+    @location = Location.find(params[:id])
   end
 
   def create
@@ -17,7 +18,7 @@ class LocationBookstoresController < ApplicationController
       })
 
     bookstore.save
-    redirect_to '/locations/#{params[:id]}/bookstores'
+    redirect_to "/locations/#{params[:id]}/bookstores"
   end
 
 end
