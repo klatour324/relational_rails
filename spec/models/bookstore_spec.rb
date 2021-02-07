@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Bookstore, type: :model do
   describe 'relationships' do
-    it { should belongs_to :location }
+    it { should belong_to :location }
   end
 
   describe 'methods' do
