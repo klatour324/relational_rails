@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Location.destroy_all
 Bookstore.destroy_all
+Location.destroy_all
 
 philly = Location.create! ({name: "Philadelphia",population: 1500000,urban: true})
 nyc = Location.create! ({name: "New York City",population: 8400000,urban: true})
