@@ -1,12 +1,14 @@
+<h2>Add a Bookstore to <%= @location.name %></h2>
+
 <form action="/locations/<%= @location.id %>/bookstores" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <p>Enter a new bookstore in <%= @location.name %>:</p>
+  <p>Enter bookstore information:</p>
   <label for="name">Bookstore Name</label><br>
   <input type='text' name='bookstore[name]' id="bs_name"/><br/>
   <label for="name">Bookstore Inventory</label><br>
   <input type='number' name='bookstore[inventory]' id="bs_inv"/><br/>
   <label for="name">Open to the public?</label><br>
-  <input type="checkbox" name='bookstore[open]' id="oepn?"/><br/>
-  <input type="submit"/>
+  <input type="checkbox" name='bookstore[open]' id="open?"/><br/>
+  <input type="submit" id="submit"/>
 </form>

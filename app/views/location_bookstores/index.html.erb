@@ -1,7 +1,9 @@
 <a href="/locations">Locations</a>
 <br><br>
 <h1><%= @location.name %> Bookstores</h1>
-
+<br>
+<a href="/locations/<%= @location.id %>/bookstores/new">New Bookstore</a>
+<br><br>
 <% @location.bookstores.each do |bookstore| %>
   <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
   <h4>Inventory:</h4>
@@ -19,5 +21,3 @@
   <br>
 <% end %>
 <br>
-
-<a href="/locations/<%= @location.id %>/bookstores/new">New Bookstore</a>
