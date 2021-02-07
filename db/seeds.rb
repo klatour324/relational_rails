@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Location.destroy_all
 Bookstore.destroy_all
+Location.destroy_all
 
 philly = Location.create! ({name: "Philadelphia",population: 1500000,urban: true})
 nyc = Location.create! ({name: "New York City",population: 8400000,urban: true})
@@ -21,3 +21,19 @@ nyc.bookstores.create! ({name: "Rizzoli Bookstore",inventory: 470,open: true})
 
 mtown.bookstores.create! ({name: "Barnes and Nobles",inventory: 13000,open: true})
 mtown.bookstores.create! ({name: "River Road Books",inventory: 0,open: false})
+
+Book.destroy_all
+Library.destroy_all
+
+chicago_public_library = Library.create!({name: "Chicago Public Library", public: true, years_opened: 150})
+newberry_library = Library.create!({name: "Newberry Library", public: false, years_opened: 75})
+harold_washington_library = Library.create!({name: "Harold Washington Library", public: true, years_opened: 90})
+
+chicago_public_library.books.create!({title: "A Mind for Numbers", checked_out: false, pages: 267})
+chicago_public_library.books.create!({title: "So You Want to Talk about Race?", checked_out: true, pages: 317})
+
+newberry_library.books.create!({title: "Dictionary of Midwestern Literature", checked_out: false, pages: 695})
+newberry_library.books.create!({title: "Weather and Society: Toward Integrated Approaches", checked_out: false, pages: 179})
+
+harold_washington_library.books.create!({title: "11/22/63", checked_out: true, pages: 989})
+harold_washington_library.books.create!({title: "The Handmaid's Tale", checked_out: true, pages: 345})
