@@ -12,13 +12,14 @@ describe Location, type: :model do
           name: "Philadelphia",
           population: 15000000,
           urban: true})
+    sleep(2)
         location_2 = Location.create({
           name: "New York City",
           population: 35000000,
           urban: true})
 
-        expect(Location.sort_by_recently_created.first).to eq (location_1)
-        expect(Location.sort_by_recently_created.last).to eq (location_2)
+        expect(Location.sort_by_recently_created.first).to eq (location_2)
+        expect(Location.sort_by_recently_created.last).to eq (location_1)
       end
     end
   end
