@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Location, type: :model do
   describe 'relationships' do
-    it { should have_many :songs }
+    it { should have_many :bookstores }
   end
 
   describe 'instance methods' do
@@ -17,8 +17,9 @@ describe Location, type: :model do
           population: 35000000,
           urban: true})
 
-        #expect page to display the most recet item first
+        expect(Location.sort_by_recently_created.first).to eq (location_1)
+        expect(Location.sort_by_recently_created.last).to eq (location_2)
       end
     end
-  end 
+  end
 end
