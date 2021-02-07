@@ -21,4 +21,7 @@ class LocationBookstoresController < ApplicationController
     redirect_to "/locations/#{params[:id]}/bookstores"
   end
 
+  def bookstore_count
+    @location.bookstore_count
+  end 
 end
