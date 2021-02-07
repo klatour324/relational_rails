@@ -39,6 +39,8 @@ RSpec.describe "location_bookstores index page" do
 
     click_on("New Bookstore")
 
-    expect(page).to have_content("Enter a new bookstore")
+    expect(page).to have_field("bs_name")
+    expect(page).to have_field("bs_inv")
+    expect(page).to have_field("open?")
   end
 end
