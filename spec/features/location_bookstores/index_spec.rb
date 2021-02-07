@@ -9,21 +9,22 @@ RSpec.describe "location_bookstores index page" do
       population: 15000000,
       urban: true})
     bookstore_1 = location_1.bookstores.create! ({
-      name: "Harriett's Bookshop",
+      name: "JimsBooks",
       inventory: 3000,
-      open: true})
+      open: false})
     bookstore_2 = location_1.bookstores.create! ({
-      name: "Joseph Fox BookStop",
+      name: "Readon",
       inventory: 444,
       open: false})
 
     visit "/locations/#{location_1.id}/bookstores"
 
     expect(page).to have_content("Bookstores")
-    # expect(page).to have_link(bookstore_1.name)
+    expect(page).to have_content(location_1.name)
+    expect(page).to have_link(bookstore_1.name)
     expect(page).to have_content(bookstore_1.inventory)
     expect(page).to have_content(bookstore_1.open)
-    # expect(page).to have_link(bookstore_2.name)
+    expect(page).to have_link(bookstore_2.name)
     expect(page).to have_content(bookstore_2.inventory)
     expect(page).to have_content(bookstore_2.open)
   end

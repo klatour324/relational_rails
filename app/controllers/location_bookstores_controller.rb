@@ -1,7 +1,6 @@
 class LocationBookstoresController < ApplicationController
 
   def index
-    binding.pry
     @location = Location.find(params[:id])
     @location.bookstores
   end
