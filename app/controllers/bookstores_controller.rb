@@ -1,6 +1,6 @@
 class BookstoresController < ApplicationController
   def index
-    @bookstores = Bookstore.all
+    @bookstores = Bookstore.open_to_the_public
   end
 
   def show
