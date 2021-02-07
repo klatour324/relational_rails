@@ -1,0 +1,2 @@
+class LocationBookstores < ApplicationRecord
+end 
