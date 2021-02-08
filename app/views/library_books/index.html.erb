@@ -1,0 +1,27 @@
+<a href="/libraries">Library</a>
+
+<h1><%= @library.name %>'s Books</h1>
+
+<a>
+  <%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
+</a>
+<ul>
+  <% @library.books.each do |book| %>
+    <li>
+      <h2>Book Title:</h2>
+      <h3><%= book.title %></h3>
+
+      <h2>Checked Out?</h2>
+      <h3><%= book.checked_out %></h3>
+
+      <h2>Number of Pages:</h2>
+      <h3><%= book.pages %></h3>
+
+      <h2>Created At:</h2>
+      <h3><%= book.created_at %></h3>
+
+      <h2>Updated At:</h2>
+      <h3><%= book.updated_at %></h3>
+    </li>
+  <% end %>
+</ul>
