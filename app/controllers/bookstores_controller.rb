@@ -1,21 +1,7 @@
 class BookstoresController < ApplicationController
   def index
-    @bookstores = Bookstore.all
+    @bookstores = Bookstore.open_to_the_public
   end
-
-  def new
-  end
-
-  # def create
-  #   bookstore = Bookstore.new({
-  #     name: params[:bookstore][:name],
-  #     inventory: params[:bookstore][:inventory],
-  #     open: params[:bookstore][:open]
-  #     })
-  #
-  #   bookstore.save
-  #   redirect_to '/bookstores'
-  # end
 
   def show
     @bookstore = Bookstore.find(params[:id])

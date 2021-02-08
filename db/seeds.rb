@@ -10,7 +10,9 @@ Bookstore.destroy_all
 Location.destroy_all
 
 philly = Location.create! ({name: "Philadelphia",population: 1500000,urban: true})
+sleep(2)
 nyc = Location.create! ({name: "New York City",population: 8400000,urban: true})
+sleep(2)
 mtown = Location.create! ({name: "Middletown",population: 65000,urban: false})
 
 philly.bookstores.create! ({name: "Joseph Fox BookStop",inventory: 444,open: false})

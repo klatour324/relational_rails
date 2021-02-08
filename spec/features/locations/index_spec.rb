@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "locations index page" do
-  it "can see all locations names" do
+  it "can see all locations names and time created" do
     location_1 = Location.create({
       name: "Philadelphia",
       population: 15000000,
@@ -15,6 +15,8 @@ RSpec.describe "locations index page" do
 
     expect(page).to have_content(location_1.name)
     expect(page).to have_content(location_2.name)
+    expect(page).to have_content(location_2.created_at)
+    expect(page).to have_content(location_2.created_at)
   end
 
   it "can click on a link to create a new record" do

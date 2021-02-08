@@ -17,8 +17,6 @@ class LocationBookstoresController < ApplicationController
       open: params[:bookstore][:open]
       })
 
-    bookstore.save
     redirect_to "/locations/#{params[:id]}/bookstores"
   end
-
 end

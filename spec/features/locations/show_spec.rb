@@ -12,6 +12,7 @@ RSpec.describe "locations individual instance show page" do
     expect(page).to have_content(location_1.name)
     expect(page).to have_content(location_1.population)
     expect(page).to have_content(location_1.urban)
+    expect(page).to have_content("Number of Bookstores:")
   end
 
   it "can update a location" do
@@ -38,7 +39,7 @@ RSpec.describe "locations individual instance show page" do
     expect(page).to have_content(true)
   end
 
-  it "can delete a location" do 
+  it "can delete a location" do
     location_1 = Location.create({
       name: "Philly",
       population: 16000000,
