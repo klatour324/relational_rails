@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "libraries index page" do
-  it "can see all libraries names" do
+  it "can see all libraries names with date and time created at" do
     libraries_1 = Library.create({
                 name: "Chicago Public Library",
                 public: true,
@@ -14,7 +14,9 @@ RSpec.describe "libraries index page" do
     visit "/libraries"
 
     expect(page).to have_content(libraries_1.name)
+    expect(page).to have_content(libraries_1.created_at)
     expect(page).to have_content(libraries_2.name)
+    expect(page).to have_content(libraries_2.created_at)
   end
 
   it 'can create a new library' do

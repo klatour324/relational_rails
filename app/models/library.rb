@@ -1,10 +1,7 @@
 class Library < ApplicationRecord
   has_many :books
 
-
-
-
-  def books_count
-    books.count
+  def self.order_by_created_date
+    order('created_at desc')
   end
 end
