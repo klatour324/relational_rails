@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "books index page" do
-  it "can see all books titles" do
+  it "can see all books titles that are checked out" do
     library_1 = Library.create!(name: "Harold Washington Library",
                                 public: true,
                                 years_opened: 75)
@@ -17,6 +17,10 @@ RSpec.describe "books index page" do
   expect(page).to have_content("All Books")
   expect(page).to have_link("New Book")
   expect(page).to  have_link(books_1.title)
-  expect(page).to  have_link(books_2.title)
+  expect(page).to_not  have_link(books_2.title)
+  # expect(page).to  have_content(books_1.title)
+  # expect(page).to  have_content(books_1.checked_out)
+  # expect(page).to  have_content(books_1.pages)
+
   end
 end

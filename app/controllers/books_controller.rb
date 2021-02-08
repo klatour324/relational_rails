@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @books = Book.is_checked_out
   end
 
   def show
