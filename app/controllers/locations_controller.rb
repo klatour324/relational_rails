@@ -42,8 +42,22 @@ class LocationsController < ApplicationController
     redirect_to '/locations/'
   end
 
-  def bookstores
-    @location = Location.find(params[:location_id])
-    @location.bookstores
-  end
+  # def bookstores
+  #   @location = Location.find(params[:location_id])
+  #   @location.bookstores
+  # end
+  #
+  # def new_bookstore
+  #   location = Location.find(params[:location_id])
+  #   bookstore = location.bookstores.new ({
+  #     name: params[:bookstore][:name],
+  #     inventory: params[:bookstore][:inventory],
+  #     open: params[:bookstore][:open],
+  #     location_id: params[:bookstore][:location_1]
+  #     })
+  #
+  #   bookstore.save
+  #
+  #   redirect_to "/locations/#{location.id}/bookstores"
+  # end
 end

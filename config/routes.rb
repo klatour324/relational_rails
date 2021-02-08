@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   patch '/bookstores/:id', to: 'bookstores#update'
   delete '/bookstores/:id', to: 'bookstores#destroy'
 
-  get '/locations/:location_id/bookstores', to: 'locations#bookstores'
+  get '/locations/:id/bookstores', to: 'location_bookstores#index', as: 'location_bookstores'
+  get '/locations/:id/bookstores/new', to: 'location_bookstores#new'
+  post '/locations/:id/bookstores', to: 'location_bookstores#create'
 
   get '/libraries/:library_id/books', to: 'library_books#index'
   get '/libraries/:library_id/books/new', to: 'library_books#new'
