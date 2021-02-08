@@ -8,12 +8,12 @@ describe Location, type: :model do
   describe 'methods' do
     describe '#sort_by_recently_created' do
       it 'sorts the locations by most recently created first and displays when created' do
-        location_1 = Location.create({
+        location_1 = Location.create! ({
           name: "Philadelphia",
           population: 15000000,
           urban: true})
     sleep(2)
-        location_2 = Location.create({
+        location_2 = Location.create! ({
           name: "New York City",
           population: 35000000,
           urban: true})
@@ -25,7 +25,7 @@ describe Location, type: :model do
 
     describe '#bookstore_count' do
       it 'counts the number of bookstores linked to that location' do
-        location_1 = Location.create({
+        location_1 = Location.create! ({
           name: "Philadelphia",
           population: 15000000,
           urban: true})
