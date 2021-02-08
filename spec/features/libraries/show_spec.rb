@@ -54,6 +54,6 @@ RSpec.describe "libraries individual show page" do
     click_link "Delete Library"
 
     expect(current_path).to eq('/libraries')
-    expect(page).to have_no_content("Chicago Public Library")
+    expect(page).to_not have_content("Chicago Public Library")
   end
 end
