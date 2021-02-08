@@ -3,21 +3,6 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
-  def new
-  end
-
-  def create
-    book = Book.new({
-      title: params[:book][:title],
-      checked_out: params[:book][:checked_out],
-      pages: params[:book][:pages]
-      })
-
-      book.save
-
-      redirect_to '/books'
-  end
-
   def show
     @book = Book.find(params[:id])
   end
@@ -33,8 +18,6 @@ class BooksController < ApplicationController
     checked_out: params[:book][:checked_out],
     pages: params[:book][:pages]
     })
-
-    book.save
 
     redirect_to "/books/#{book.id}"
   end

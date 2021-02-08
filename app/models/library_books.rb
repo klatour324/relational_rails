@@ -1,0 +1,2 @@
+class LibraryBooks < ApplicationRecord
+end
