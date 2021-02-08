@@ -1,0 +1,13 @@
+<h2>Add a New Book to <%= @library.name %></h2>
+
+<form action="/libraries/<%= @library.id %>/books" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h3>Enter Book Information:</h3>
+  <label for="title">Title</label><br>
+  <input id="book_title" type="text" name="book[title]" /><br/>
+  <label for="name">Checked Out?</label><br/>
+  <input id="a_checkbox" type="checkbox" name="book[checked_out]" /><br/>
+  <label for="name">Number of Pages</label><br/>
+  <input id="pages" type="text" name="book[pages]" /><br/>
+  <input id="create_book" type="submit" value="Create Book" />
+</form>
