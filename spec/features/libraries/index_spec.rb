@@ -11,7 +11,7 @@ RSpec.describe "libraries index page" do
                 public: false,
                 years_opened: 75})
 
-      visit "/libraries"
+    visit "/libraries"
 
     expect(page).to have_content(libraries_1.name)
     expect(page).to have_content(libraries_2.name)
