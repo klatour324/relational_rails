@@ -36,4 +36,4 @@ newberry_library.books.create!({title: "Dictionary of Midwestern Literature", ch
 newberry_library.books.create!({title: "Weather and Society: Toward Integrated Approaches", checked_out: false, pages: 179})
 
 harold_washington_library.books.create!({title: "11/22/63", checked_out: true, pages: 989})
-harold_washington_library.books.create!({title: "The Handmaid's Tale", checked_out: true, pages: 345})
+harold_washington_library.books.create!({title: "The Handmaid's Tale", checked_out: false, pages: 345})
