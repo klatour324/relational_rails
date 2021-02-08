@@ -3,17 +3,12 @@ class LibrariesController < ApplicationController
     @libraries = Library.all
   end
 
-  def new
-  end
-
   def create
-    library = Library.new({
+    library = Library.create({
       name: params[:library][:name],
       public: params[:library][:public],
       years_opened: params[:library][:years_opened]
       })
-
-    library.save
 
     redirect_to '/libraries'
   end
@@ -25,7 +20,7 @@ class LibrariesController < ApplicationController
   def edit
     @library = Library.find(params[:id])
   end
-  
+
   def update
     library = Library.find(params[:id])
     library.update({
@@ -33,8 +28,6 @@ class LibrariesController < ApplicationController
       public: params[:library][:public],
       years_opened: params[:library][:years_opened]
       })
-
-    library.save
 
     redirect_to "/libraries/#{library.id}"
   end
