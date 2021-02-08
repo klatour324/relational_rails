@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get '/locations/:id/bookstores/new', to: 'location_bookstores#new'
   post '/locations/:id/bookstores', to: 'location_bookstores#create'
 
+  get '/libraries/:library_id/books', to: 'library_books#index'
+  get '/libraries/:library_id/books/new', to: 'library_books#new'
+  post '/libraries/:library_id/books', to: 'library_books#create'
+
 
   get '/libraries', to: 'libraries#index'
   get '/libraries/new', to: 'libraries#new'
@@ -33,10 +37,8 @@ Rails.application.routes.draw do
   delete '/libraries/:id', to: 'libraries#destroy'
 
   get '/books', to: 'books#index'
-  get '/books/new', to: 'books#new'
-  post '/books', to: 'books#create'
   get '/books/:id', to: 'books#show'
   get '/books/:id/edit', to: 'books#edit'
   patch '/books/:id', to: 'books#update'
-  delete 'books/:id', to: 'books#destroy'
+  delete '/books/:id', to: 'books#destroy'
 end
