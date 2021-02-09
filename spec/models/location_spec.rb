@@ -18,8 +18,9 @@ describe Location, type: :model do
           population: 35000000,
           urban: true})
 
-        expect(Location.sort_by_recently_created.first).to eq (location_2)
-        expect(Location.sort_by_recently_created.last).to eq (location_1)
+        expect(Location.sort_by_recently_created[0].created_at).to be > (Location.sort_by_recently_created[1].created_at)
+        expect(Location.sort_by_recently_created[1].created_at).to be > (Location.sort_by_recently_created[2].created_at)
+        expect(Location.sort_by_recently_created[2].created_at).to be > (Location.sort_by_recently_created[3].created_at)
       end
     end
 
@@ -49,6 +50,18 @@ describe Location, type: :model do
         bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
 
         expect(location_1.bookstores_by_inventory(500)).to eq ([bookstore_1])
+      end
+    end
+
+    describe '#abc_bookstores' do
+      it 'can sort the bookstores in alphabetical order when button is clicked' do
+        location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+        bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+        bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
+        bookstore_3 = location_1.bookstores.create! ({ name: "Miner Books", inventory: 250, open: true})
+
+
+        expect(location_1.abc_bookstores).to eq ([bookstore_1, bookstore_3, bookstore_2])
       end
     end
   end
