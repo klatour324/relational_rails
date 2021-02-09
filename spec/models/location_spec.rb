@@ -17,10 +17,14 @@ describe Location, type: :model do
           name: "New York City",
           population: 35000000,
           urban: true})
+    sleep(2)
+        location_3 = Location.create! ({
+          name: "Chicago",
+          population: 25000000,
+          urban: true})
 
         expect(Location.sort_by_recently_created[0].created_at).to be > (Location.sort_by_recently_created[1].created_at)
         expect(Location.sort_by_recently_created[1].created_at).to be > (Location.sort_by_recently_created[2].created_at)
-        expect(Location.sort_by_recently_created[2].created_at).to be > (Location.sort_by_recently_created[3].created_at)
       end
     end
 

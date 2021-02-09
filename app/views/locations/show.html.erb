@@ -4,7 +4,7 @@
 <h2>Population:</h2>
 <p><%= @location.population %></p>
 <h2>Urban?</h2>
-<%if @location.urban == nil %>
+<%if @location.urban == nil || @location.urban == false %>
     <p><%= false %></p>
     <% else %>
     <p><%= true %></p>
