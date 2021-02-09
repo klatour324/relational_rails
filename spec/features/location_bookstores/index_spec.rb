@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "location_bookstores index page" do
-  skip "can see all associated bookstores and attributes" do
+  it "can see all associated bookstores and attributes" do
     location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
     bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
     bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
@@ -18,7 +18,7 @@ RSpec.describe "location_bookstores index page" do
     expect(page).to have_content(bookstore_2.open)
   end
 
-  skip "can link to create a new bookstore page" do
+  it "can link to create a new bookstore page" do
     location_1 = Location.create! ({
       name: "Philadelphia",
       population: 15000000,
@@ -33,7 +33,7 @@ RSpec.describe "location_bookstores index page" do
     expect(page).to have_field("open?")
   end
 
-  skip "can filter bookstores by input value from user" do
+  it "can filter bookstores by input value from user" do
     location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
     bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
     bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})

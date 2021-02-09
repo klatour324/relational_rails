@@ -1,14 +1,14 @@
 class LocationBookstoresController < ApplicationController
 
   def index
-    # if params[:user_input_inventory] != nil
-    #   @location = Location.find(params[:id])
-    #   @location.bookstores_by_inventory(params[:user_input_inventory].to_i)
-    # else
-    #   @location = Location.find(params[:id])
-    #   @location.bookstores
-    # end
     @location = Location.find(params[:id])
+    if params[:user_input_inventory] != nil
+      @bookstores = @location.bookstores_by_inventory(params[:user_input_inventory].to_i)
+    elsif params[:alphabetize] != nil
+      @bookstores = @location.abc_bookstores
+    else
+      @bookstores = @location.bookstores
+    end
   end
 
   def new

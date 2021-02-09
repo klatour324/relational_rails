@@ -16,76 +16,19 @@
 <% end %>
 
 <br>
-<% if params[:user_input_inventory] == nil %>
-  <% if params[:alphabetize] == nil %>
-    <% @location.bookstores.each do |bookstore| %>
-      <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
-      <h4>Inventory:</h4>
-      <p><%= bookstore.inventory %></p>
-      <h4>Open?</h4>
-      <% if bookstore.open == nil || bookstore.open == false %>
-          <p><%= false %></p>
-      <% else %>
-          <p><%= true %></p>
-      <% end %>
-      <h4>Created at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <h4>Updated at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <br>
-    <% end %>
-  <% else params[:alphabetize] != nil %>
-    <% @location.abc_bookstores.each do |bookstore| %>
-      <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
-      <h4>Inventory:</h4>
-      <p><%= bookstore.inventory %></p>
-      <h4>Open?</h4>
-      <% if bookstore.open == nil || bookstore.open == false %>
-          <p><%= false %></p>
-      <% else %>
-          <p><%= true %></p>
-      <% end %>
-      <h4>Created at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <h4>Updated at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <br>
-    <% end %>
+<% @bookstores.each do |bookstore| %>
+  <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
+  <h4>Inventory:</h4>
+  <p><%= bookstore.inventory %></p>
+  <h4>Open?</h4>
+  <% if bookstore.open == nil || bookstore.open == false %>
+      <p><%= false %></p>
+  <% else %>
+      <p><%= true %></p>
   <% end %>
-<% else params[:user_input_inventory] != nil %>
- <% if params[:alphabetize] == nil %>
-    <% @location.bookstores_by_inventory(params[:user_input_inventory].to_i).each do |bookstore| %>
-      <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
-      <h4>Inventory:</h4>
-      <p><%= bookstore.inventory %></p>
-      <h4>Open?</h4>
-      <% if bookstore.open == nil || bookstore.open == false %>
-          <p><%= false %></p>
-      <% else %>
-          <p><%= true %></p>
-      <% end %>
-      <h4>Created at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <h4>Updated at:</h4>
-      <p><%= bookstore.created_at %></p>
-      <br>
-    <% end %>
-    <% else params[:alphabetize] != nil %>
-      <% @location.abc_by_inventory(params[:user_input_inventory].to_i).each do |bookstore| %>
-        <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
-        <h4>Inventory:</h4>
-        <p><%= bookstore.inventory %></p>
-        <h4>Open?</h4>
-        <% if bookstore.open == nil || bookstore.open == false %>
-            <p><%= false %></p>
-        <% else %>
-            <p><%= true %></p>
-        <% end %>
-        <h4>Created at:</h4>
-        <p><%= bookstore.created_at %></p>
-        <h4>Updated at:</h4>
-        <p><%= bookstore.created_at %></p>
-        <br>
-      <% end %>
-    <% end %>
+  <h4>Created at:</h4>
+  <p><%= bookstore.created_at %></p>
+  <h4>Updated at:</h4>
+  <p><%= bookstore.created_at %></p>
+  <br>
 <% end %>
