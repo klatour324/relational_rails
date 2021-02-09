@@ -6,6 +6,10 @@ RSpec.describe "locations individual instance show page" do
       name: "Philadelphia",
       population: 15000000,
       urban: true})
+    location_2 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: false})
 
     visit "/locations/#{location_1.id}"
 

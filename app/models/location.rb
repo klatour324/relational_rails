@@ -8,4 +8,12 @@ class Location < ApplicationRecord
   def bookstore_count
     bookstores.count
   end
+
+  def bookstores_by_inventory(value)
+    bookstores.where("inventory > #{value}")
+  end
+
+  def abc_bookstores
+    bookstores.order('name')
+  end
 end

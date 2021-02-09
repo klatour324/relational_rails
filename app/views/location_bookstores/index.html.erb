@@ -1,23 +1,34 @@
 <a href="/locations">Locations</a>
-<br><br>
 <h1><%= @location.name %> Bookstores</h1>
 <br>
 <a href="/locations/<%= @location.id %>/bookstores/new">New Bookstore</a>
-<br><br>
-<% @location.bookstores.each do |bookstore| %>
+<br>
+
+<%= form_with(url: "/locations/#{@location.id}/bookstores", method: "get", local: true) do |form| %>
+  <%= form.number_field :user_input_inventory %>
+  <%= form.submit 'Search Inventory' %>
+<% end %>
+<br>
+
+<%= form_with(url: "/locations/#{@location.id}/bookstores", method: "get", local: true) do |form| %>
+  <%= form.hidden_field :alphabetize %>
+  <%= form.submit 'Alphabetical Sort' %>
+<% end %>
+
+<br>
+<% @bookstores.each do |bookstore| %>
   <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
   <h4>Inventory:</h4>
   <p><%= bookstore.inventory %></p>
   <h4>Open?</h4>
-  <%if bookstore.open == nil || bookstore.open == false %>
+  <% if bookstore.open == nil || bookstore.open == false %>
       <p><%= false %></p>
-      <% else %>
+  <% else %>
       <p><%= true %></p>
-    <% end %>
+  <% end %>
   <h4>Created at:</h4>
   <p><%= bookstore.created_at %></p>
   <h4>Updated at:</h4>
   <p><%= bookstore.created_at %></p>
   <br>
 <% end %>
-<br>

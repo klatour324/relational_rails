@@ -2,20 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "location_bookstores index page" do
   it "can see all associated bookstores and attributes" do
-  #This test is set up to have bookstore1 added to location_1. bookstore_2
-  #should be not be linked, and should confirm it is not on the page
-    location_1 = Location.create! ({
-      name: "Philadelphia",
-      population: 15000000,
-      urban: true})
-    bookstore_1 = location_1.bookstores.create! ({
-      name: "JimsBooks",
-      inventory: 3000,
-      open: false})
-    bookstore_2 = location_1.bookstores.create! ({
-      name: "Readon",
-      inventory: 444,
-      open: false})
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+    bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
 
     visit "/locations/#{location_1.id}/bookstores"
 
@@ -42,5 +31,32 @@ RSpec.describe "location_bookstores index page" do
     expect(page).to have_field("bs_name")
     expect(page).to have_field("bs_inv")
     expect(page).to have_field("open?")
+  end
+
+  it "can filter bookstores by input value from user" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+    bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
+    bookstore_3 = location_1.bookstores.create! ({ name: "Deals n Splills", inventory: 501, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores"
+    fill_in :user_input_inventory, with: 500
+    click_on 'Search Inventory'
+
+    expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
+    expect(page).to have_no_content(bookstore_2.name)
+    expect(page).to have_content(bookstore_3.name)
+  end
+
+  it "can sort bookstores by name after a button is clicked" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+    bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
+    bookstore_3 = location_1.bookstores.create! ({ name: "Deals n Splills", inventory: 501, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores"
+    click_on 'Alphabetical Sort'
+
+    expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
   end
 end
