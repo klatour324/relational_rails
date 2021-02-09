@@ -8,4 +8,8 @@ class Book < ApplicationRecord
   def self.records_within_criteria(criteria)
     where("pages > ?", criteria)
   end
+
+  # def self.sort_alphabetically
+  #   order(:title)
+  # end
 end

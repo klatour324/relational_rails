@@ -1,6 +1,7 @@
 class LibrariesController < ApplicationController
   def index
     @libraries = Library.all
+    @libraries = Library.books.sort_alphabetically
   end
 
   def create
