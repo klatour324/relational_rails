@@ -59,6 +59,6 @@ RSpec.describe "books show page" do
     click_link "Delete Book"
 
     expect(current_path).to eq("/books")
-    expect(page).to have_no_content("Lord of the Rings Trilogy")
+    expect(page).to_not have_content("Lord of the Rings Trilogy")
   end
 end
