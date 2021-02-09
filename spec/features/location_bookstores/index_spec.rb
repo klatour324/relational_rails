@@ -37,6 +37,7 @@ RSpec.describe "location_bookstores index page" do
     location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
     bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
     bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
+    bookstore_3 = location_1.bookstores.create! ({ name: "Deals n Splills", inventory: 501, open: false})
 
     visit "/locations/#{location_1.id}/bookstores"
     fill_in :user_input_inventory, with: 500
@@ -44,5 +45,6 @@ RSpec.describe "location_bookstores index page" do
 
     expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
     expect(page).to have_no_content(bookstore_2.name)
+    expect(page).to have_content(bookstore_3.name)
   end
 end

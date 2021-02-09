@@ -10,8 +10,9 @@ class Location < ApplicationRecord
   end
 
   def bookstores_by_inventory(value)
-    bookstores.all.select do |bookstore|
-      bookstore.inventory > value
-    end
+    # bookstores.all.select do |bookstore|
+    #   bookstore.inventory > value
+    # end
+    bookstores.where("inventory > #{value}")
   end
 end
