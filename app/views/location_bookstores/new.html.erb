@@ -3,7 +3,7 @@
 <form action="/locations/<%= @location.id %>/bookstores" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <p>Enter bookstore information:</p>
+<p>Enter bookstore information:</p>
   <label for="name">Bookstore Name</label><br>
   <input type='text' name='bookstore[name]' id="bs_name"/><br/>
   <label for="name">Bookstore Inventory</label><br>

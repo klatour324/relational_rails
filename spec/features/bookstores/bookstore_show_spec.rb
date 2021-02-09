@@ -46,6 +46,7 @@ RSpec.describe "bookstores show page" do
   end
 
   it "can delete a bookstore" do
+
     location_1 = Location.create! ({
       name: "Philadelphia",
       population: 15000000,
