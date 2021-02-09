@@ -38,7 +38,17 @@ describe Location, type: :model do
           inventory: 450,
           open: false})
 
-      expect(location_1.bookstore_count).to eq 2
+        expect(location_1.bookstore_count).to eq 2
+      end
+    end
+
+    describe '#bookstore_by_inventory' do
+      it 'returns only the bookstores with greater inventory than the user input' do
+        location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+        bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+        bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
+
+        expect(location_1.bookstore_by_inventory).to eq ([bookstore_1])
       end
     end
   end
