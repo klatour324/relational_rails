@@ -1,5 +1,6 @@
 class LibrariesController < ApplicationController
   def index
+    @libraries = Library.all
     @libraries = Library.all.order_by_created_date
   end
 

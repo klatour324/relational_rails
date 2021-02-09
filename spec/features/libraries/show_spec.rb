@@ -29,13 +29,15 @@ RSpec.describe "libraries individual show page" do
 
     expect(current_path).to eq("/libraries/#{libraries_1.id}/edit")
 
-    fill_in('library_name', with: 'Chicago Public Library')
+    fill_in('library_name', with: 'NYC Library')
     check('a_checkbox')
-    fill_in('years_opened', with: 150)
+    fill_in('years_opened', with: 300)
 
     click_button "Submit"
 
     expect(current_path).to eq("/libraries/#{libraries_1.id}")
+    expect(page).to have_content("NYC Library")
+    expect(page).to have_content 300
   end
 
   it 'can delete a library' do
