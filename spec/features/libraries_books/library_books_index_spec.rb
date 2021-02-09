@@ -15,17 +15,17 @@ RSpec.describe "library_books index page" do
       checked_out: false,
       pages: 484})
 
-  visit "/libraries/#{library_1.id}/books"
+    visit "/libraries/#{library_1.id}/books"
 
-  expect(page).to have_content(book_1.title)
-  expect(page).to have_content(book_1.checked_out)
-  expect(page).to have_content(book_1.pages)
-  expect(page).to have_content(book_2.title)
-  expect(page).to have_content(book_2.checked_out)
-  expect(page).to have_content(book_2.pages)
+    expect(page).to have_content(book_1.title)
+    expect(page).to have_content(book_1.checked_out)
+    expect(page).to have_content(book_1.pages)
+    expect(page).to have_content(book_2.title)
+    expect(page).to have_content(book_2.checked_out)
+    expect(page).to have_content(book_2.pages)
   end
 
-  describe "Show records over a given threshold" do
+  describe "filter books by number of pages" do
     it "can only return books with a certain number of pages" do
       library_1 = Library.create!({
         name: "Chicago Public Library",
@@ -49,8 +49,8 @@ RSpec.describe "library_books index page" do
       expect(page).to have_content("Please enter a number:")
       expect(page).to have_content("Only return records with more than 'n' number of pages")
 
-      fill_in("title", with: 300)
-      # save_and_open_page
+      fill_in('title', with: 300)
+
       click_button("Submit")
 
       expect(current_path).to eq("/libraries/#{library_1.id}/books")
@@ -58,6 +58,7 @@ RSpec.describe "library_books index page" do
       expect(page).to have_content(book_3.title)
       expect(page).to_not have_content(book_1.title)
     end
+
     describe 'sort Libray books alphabetically by name' do
       it 'can sort books alphabetically for a specific library' do
         library_1 = Library.create!({
@@ -79,9 +80,9 @@ RSpec.describe "library_books index page" do
 
         visit "/libraries/#{library_1.id}/books"
 
-        expect(page).to have_link('Sort Books')
+        expect(page).to have_button('Sort Books Alphabetically')
 
-        click_link('Sort Books')
+        click_button('Sort Books Alphabetically')
 
         expect(current_path).to eq("/libraries/#{library_1.id}/books")
         expect(page).to have_content(book_3.title)

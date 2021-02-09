@@ -6,22 +6,19 @@
 <h2>Please enter a number:</h2>
 <%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true do |form| %>
   <%= form.label :title, "Only return records with more than 'n' number of pages" %>
-  <%= form.text_field :title, id: 'title' %>
+  <%= form.number_field :title, id: 'title' %>
   <%= form.submit "Submit" %>
 <% end %><br>
 
-<!-- <form action="/libraries/#{@library.id}/books" method="get">
-  <label for="title">
-    Only return records with more than 'n' number of pages
-    <input type="text" id="title" name="title">
-  </label>
-  <input type="submit" value="Submit">
-</form> -->
+<%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true do |form| %>
+  <%= form.hidden_field :alpha_sort %>
+  <%= form.submit "Sort Books Alphabetically" %>
+<% end %>
 
-  <h2><a><%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %></a></h2>
+  <h3><a><%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %></a></h3>
 
 <ul>
-  <% @library.books.each do |book| %>
+  <% @books.each do |book| %>
     <li>
       <h2>Book Title:</h2>
       <h3><%= book.title %></h3>
@@ -40,5 +37,3 @@
     </li>
   <% end %>
 </ul>
-
-<h2><a><%= link_to "Sort Books", "/libraries/#{@library.id}/books" %></a></h2>

@@ -5,11 +5,11 @@ class Book < ApplicationRecord
     where(checked_out: true).to_a
   end
 
-  def self.records_within_criteria(criteria)
-    where("pages > ?", criteria)
+  def self.filter_by_pages(pages)
+    where("pages > ?", pages)
   end
 
-  # def self.sort_alphabetically
-  #   order(:title)
-  # end
+  def self.sort_alphabetically
+    order(:title)
+  end
 end

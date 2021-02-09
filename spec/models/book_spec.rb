@@ -28,7 +28,7 @@ describe Book, type: :model do
       expect(Book.is_checked_out).to_not eq([book_3])
     end
 
-    it '#records_within_criteria' do
+    it '#filter_by_pages' do
       library_1 = Library.create!({
           name: 'Logan Square Library',
           public: true,
@@ -46,29 +46,29 @@ describe Book, type: :model do
           checked_out: true,
           pages: 267})
 
-      expect(Book.records_within_criteria(200)).to eq([book_1, book_3])
-      expect(Book.records_within_criteria(200)).to_not eq([book_2])
+      expect(Book.filter_by_pages(200)).to eq([book_1, book_3])
+      expect(Book.filter_by_pages(200)).to_not eq([book_2])
     end
 
-    # it '#sort_alphabetically' do
-    #   library_1 = Library.create!({
-    #       name: 'Logan Square Library',
-    #       public: true,
-    #       years_opened: 75})
-    #   book_1 = library_1.books.create!({
-    #       title: 'To Kill a Mockingbird',
-    #       checked_out: true,
-    #       pages: 445})
-    #   book_2 = library_1.books.create!({
-    #       title: 'Of Mice and Men',
-    #       checked_out: false,
-    #       pages: 187})
-    #   book_3 = library_1.books.create!({
-    #       title: 'A Mind for Numbers',
-    #       checked_out: true,
-    #       pages: 267})
-    #
-    # expect(Book.sort_alphabetically).to eq([book_3, book_2, book_1])
+    it '#sort_alphabetically' do
+      library_1 = Library.create!({
+        name: 'Logan Square Library',
+        public: true,
+        years_opened: 75})
+      book_1 = library_1.books.create!({
+        title: 'To Kill a Mockingbird',
+        checked_out: true,
+        pages: 445})
+      book_2 = library_1.books.create!({
+        title: 'Of Mice and Men',
+        checked_out: false,
+        pages: 187})
+      book_3 = library_1.books.create!({
+        title: 'A Mind for Numbers',
+        checked_out: true,
+        pages: 267})
+
+      expect(Book.sort_alphabetically).to eq([book_3, book_2, book_1])
     end
   end
 end

@@ -7,8 +7,5 @@ class Library < ApplicationRecord
 
   def books_count
     books.count
-
-  def sort_alphabetically
-    books.order('title')
   end
 end
