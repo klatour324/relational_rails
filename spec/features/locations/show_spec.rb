@@ -36,13 +36,18 @@ RSpec.describe "locations individual instance show page" do
       name: "Philly",
       population: 16000000,
       urban: true})
-    location_1.bookstores.create({name: "Joseph Fox BookStop",inventory: 444,open: false})
-    location_1.bookstores.create({name: "Harriett's Bookshop",inventory: 3000,open: true})
+    book_1 = location_1.bookstores.create({name: "Joseph Fox BookStop",inventory: 444,open: false})
+    book_2 = location_1.bookstores.create({name: "Harriett's Bookshop",inventory: 3000,open: true})
 
     visit "/locations/#{location_1.id}"
     click_on("Delete Location")
 
     expect(page).to have_content("All Locations")
-    expect(page).to have_no_content("Philly")
+    expect(page).to_not have_content("Philly")
+
+    visit "/bookstores"
+    expect(page).to_not have_content(book_1)
+    expect(page).to_not have_content(book_2)
+    expect(page).to_not have_content(book_2)
   end
 end
