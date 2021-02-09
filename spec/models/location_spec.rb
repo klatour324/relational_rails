@@ -48,7 +48,7 @@ describe Location, type: :model do
         bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
         bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
 
-        expect(location_1.bookstore_by_inventory).to eq ([bookstore_1])
+        expect(location_1.bookstores_by_inventory(500)).to eq ([bookstore_1])
       end
     end
   end

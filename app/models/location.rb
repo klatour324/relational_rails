@@ -9,9 +9,9 @@ class Location < ApplicationRecord
     bookstores.count
   end
 
-  def bookstore_by_inventory(value)
+  def bookstores_by_inventory(value)
     bookstores.all.select do |bookstore|
-      bookstore.inventory > user_input_inventory
+      bookstore.inventory > value
     end
   end
 end
