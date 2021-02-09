@@ -10,12 +10,22 @@ RSpec.describe "bookstores show page" do
       name: "Harriett's Bookshop",
       inventory: 3000,
       open: true})
+    bookstore_2 = location_1.bookstores.create! ({
+      name: "Ace Bookshop",
+      inventory: 3000,
+      open: false})
 
     visit "/bookstores/#{bookstore_1.id}"
 
     expect(page).to have_content(bookstore_1.name)
     expect(page).to have_content(bookstore_1.inventory)
     expect(page).to have_content(bookstore_1.open)
+
+    visit "/bookstores/#{bookstore_2.id}"
+
+    expect(page).to have_content(bookstore_2.name)
+    expect(page).to have_content(bookstore_2.inventory)
+    expect(page).to have_content(bookstore_2.open)
   end
 
   it "can update a bookstore" do

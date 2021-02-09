@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "bookstores index page" do
-  it "can see all bookstores and their atttributes (name, open?, inventory)" do
+  it "can see all open bookstores and their atttributes (name, open?, inventory)" do
     location_1 = Location.create! ({
       name: "Philadelphia",
       population: 15000000,
