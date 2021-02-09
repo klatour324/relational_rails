@@ -4,6 +4,12 @@
 <br>
 <a href="/locations/<%= @location.id %>/bookstores/new">New Bookstore</a>
 <br><br>
+<%= form_with url: "/locations/<%= @location.id %>/bookstores", method: :get do |form| %>
+  <%= form.label :bookstores_by_inventory %>
+  <%= form.text_field :bookstores_by_inventory %>
+  <%= form.submit 'Search Inventory' %>
+<% end %>
+<br>
 <% @location.bookstores.each do |bookstore| %>
   <a href="/bookstores/<%= bookstore.id %>"><h3><%= bookstore.name %></h3></a>
   <h4>Inventory:</h4>
@@ -20,4 +26,3 @@
   <p><%= bookstore.created_at %></p>
   <br>
 <% end %>
-<br>

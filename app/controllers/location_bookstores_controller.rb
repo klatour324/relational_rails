@@ -2,6 +2,7 @@ class LocationBookstoresController < ApplicationController
 
   def index
     @location = Location.find(params[:id])
+    # binding.pry
     if params[:user_input_inventory] == nil
       @location.bookstores
     else
