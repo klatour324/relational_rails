@@ -2,9 +2,23 @@
 
 <h1><%= @library.name %>'s Books</h1>
 
-<a>
-  <%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>
-</a>
+<h2>Please enter a number:</h2>
+<%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true do |form| %>
+  <%= form.label :title, "Only return records with more than 'n' number of pages" %>
+  <%= form.text_field :title, id: 'title' %>
+  <%= form.submit "Submit" %>
+<% end %><br>
+
+<!-- <form action="/libraries/#{@library.id}/books" method="get">
+  <label for="title">
+    Only return records with more than 'n' number of pages
+    <input type="text" id="title" name="title">
+  </label>
+  <input type="submit" value="Submit">
+</form> -->
+
+  <h2><a><%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %></a></h2>
+
 <ul>
   <% @library.books.each do |book| %>
     <li>
