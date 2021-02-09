@@ -16,4 +16,9 @@ class Location < ApplicationRecord
   def abc_bookstores
     bookstores.order('name')
   end
+
+  def abc_by_inventory(value)
+    inventory_match = bookstores_by_inventory(value)
+    inventory_match.order('name')
+  end 
 end

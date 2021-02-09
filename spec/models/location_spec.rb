@@ -54,7 +54,7 @@ describe Location, type: :model do
     end
 
     describe '#abc_bookstores' do
-      it 'can sort the bookstores in alphabetical order when button is clicked' do
+      it 'can sort the bookstores in alphabetical order by name' do
         location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
         bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
         bookstore_2 = location_1.bookstores.create! ({ name: "Readon", inventory: 444, open: false})
