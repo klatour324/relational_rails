@@ -4,5 +4,6 @@
 <% @libraries.each do |library| %>
   <p><strong><%= library.name %></strong></p>
   <p><%= library.created_at %></p>
-  <a><%= link_to "Update Library", "/libraries/#{library.id}/edit" %></a>
+  <%= link_to "Update Library", "/libraries/#{library.id}/edit" %><br>
+  <br><%= link_to "Delete Library", "/libraries/#{library.id}", method: :delete %>
 <% end %>

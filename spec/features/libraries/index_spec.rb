@@ -64,4 +64,33 @@ RSpec.describe "libraries index page" do
 
     expect(current_path).to eq("/libraries/#{library_3.id}/edit")
   end
+
+  it "can delete a library through individual delete link for that library" do
+    library_1 = Library.create!({
+                name: "Chicago Public Library",
+                public: true,
+                years_opened: 150})
+    library_2 = Library.create!({
+                name: "Newberry Library",
+                public: false,
+                years_opened: 75})
+    library_3 = Library.create!({
+                name: "Hollywood Hills Library",
+                public: false,
+                years_opened: 75})
+
+    visit "/libraries"
+
+    expect(page).to have_link("Delete Library")
+    expect(page).to have_content("Chicago Public Library")
+    expect(page).to have_content("Newberry Library")
+    expect(page).to have_content("Hollywood Hills Library")
+
+    click_link("Delete Library", match: :first)
+
+    expect(current_path).to eq("/libraries")
+    expect(page).to_not have_content("Hollywood Hills Library")
+    expect(page).to have_content("Chicago Public Library")
+    expect(page).to have_content("Newberry Library")
+  end
 end
