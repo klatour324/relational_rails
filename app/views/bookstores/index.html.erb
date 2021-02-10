@@ -1,5 +1,7 @@
 <a href="/locations">Locations</a>
 <br>
+<a href="/bookstores">Bookstores</a>
+<br><br>
 <h1>All Bookstores</h1>
 
 <% @bookstores.each do |bookstore| %>
@@ -8,4 +10,6 @@
   <p><%= bookstore.inventory %></p>
   <h4>Open?</h4>
   <p><%= bookstore.open %></p>
+  <a><%= link_to "Delete Bookstore", "/bookstores/#{bookstore.id}", method: :delete %></a>
+  <a><%= link_to "Update Bookstore", "/bookstores/#{bookstore.id}/edit"%></a>
 <% end %>
