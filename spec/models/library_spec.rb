@@ -6,7 +6,7 @@ describe Library, type: :model do
   end
 
   describe 'class methods' do
-    describe '#order_by_created_date' do
+    describe '::order_by_created_date' do
       it 'orders and shows the records by most recently created first' do
         library_1 = Library.create!({
           name: "Chicago Public Library",
