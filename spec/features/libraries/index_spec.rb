@@ -19,7 +19,7 @@ RSpec.describe "libraries index page" do
     expect(page).to have_content(library_2.created_at)
   end
 
-  it "can create a new library" do
+  it "can create a new public library" do
     visit "/libraries"
 
     expect(page).to have_link("New Library")
@@ -37,6 +37,25 @@ RSpec.describe "libraries index page" do
 
     expect(current_path).to eq("/libraries")
     expect(page).to have_content("Chicago Public Library")
+  end
+
+  it "can create a new private library" do
+    visit "/libraries"
+
+    expect(page).to have_link("New Library")
+
+    click_link "New Library"
+
+    expect(current_path).to eq("/libraries/new")
+    expect(page).to have_content("Enter a new Library:")
+
+    fill_in("library_name", with: "Reading Rainbow Library")
+    uncheck("a_checkbox")
+    fill_in("years_opened", with: 40)
+
+    click_button "create_library"
+    expect(current_path).to eq("/libraries")
+    expect(page).to have_content("Reading Rainbow Library")
   end
 
   it "can sort each library by most recently created" do
@@ -59,7 +78,7 @@ RSpec.describe "libraries index page" do
 
     this = (library_3.name)
     that = (library_1.name)
-    
+
     expect(this).to appear_before(that)
   end
 
@@ -85,6 +104,9 @@ RSpec.describe "libraries index page" do
     expect(page).to have_content("Hollywood Hills Library")
 
     click_link("Update Library", match: :first)
+    fill_in("library_name", with: "Reading Rainbow Library")
+    uncheck("a_checkbox")
+    fill_in("years_opened", with: 29)
 
     expect(current_path).to eq("/libraries/#{library_3.id}/edit")
   end
