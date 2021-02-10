@@ -2,32 +2,32 @@ require 'rails_helper'
 
 RSpec.describe "libraries individual show page" do
   it "can show and individual library and its attributes" do
-    libraries_1 = Library.create({
+    library_1 = Library.create({
                 name: "Chicago Public Library",
                 public: true,
                 years_opened: 150})
 
-    visit "/libraries/#{libraries_1.id}"
+    visit "/libraries/#{library_1.id}"
 
-    expect(page).to have_content(libraries_1.name)
-    expect(page).to have_content(libraries_1.public)
-    expect(page).to have_content(libraries_1.years_opened)
+    expect(page).to have_content(library_1.name)
+    expect(page).to have_content(library_1.public)
+    expect(page).to have_content(library_1.years_opened)
     expect(page).to have_content("Number of Books:")
   end
 
   it 'can update information about a library' do
-    libraries_1 = Library.create({
+    library_1 = Library.create({
                 name: "Chicago Public Library",
                 public: true,
                 years_opened: 150})
 
-    visit "/libraries/#{libraries_1.id}"
+    visit "/libraries/#{library_1.id}"
 
     expect(page).to have_link("Update Library")
 
     click_link "Update Library"
 
-    expect(current_path).to eq("/libraries/#{libraries_1.id}/edit")
+    expect(current_path).to eq("/libraries/#{library_1.id}/edit")
 
     fill_in('library_name', with: 'NYC Library')
     check('a_checkbox')
@@ -35,18 +35,18 @@ RSpec.describe "libraries individual show page" do
 
     click_button "Submit"
 
-    expect(current_path).to eq("/libraries/#{libraries_1.id}")
+    expect(current_path).to eq("/libraries/#{library_1.id}")
     expect(page).to have_content("NYC Library")
     expect(page).to have_content 300
   end
 
   it 'can delete a library' do
-    libraries_1 = Library.create({
+    library_1 = Library.create({
                 name: "Chicago Public Library",
                 public: true,
                 years_opened: 150})
 
-    visit "/libraries/#{libraries_1.id}"
+    visit "/libraries/#{library_1.id}"
 
     expect(page).to have_link("Delete Library")
 
