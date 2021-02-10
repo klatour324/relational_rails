@@ -12,12 +12,12 @@ describe Location, type: :model do
           name: "Philadelphia",
           population: 15000000,
           urban: true})
-    sleep(2)
+    sleep(1)
         location_2 = Location.create! ({
           name: "New York City",
           population: 35000000,
           urban: true})
-    sleep(2)
+    sleep(1)
         location_3 = Location.create! ({
           name: "Chicago",
           population: 25000000,
