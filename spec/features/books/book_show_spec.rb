@@ -5,16 +5,16 @@ RSpec.describe "books show page" do
     library_1 = Library.create!(name: "Newberry Library",
                                 public: false,
                                 years_opened: 75)
-    books_1 = library_1.books.create!(title: "A Mind for Numbers",
+    book_1 = library_1.books.create!(title: "A Mind for Numbers",
                                       checked_out: true,
                                       pages: 487)
 
-    visit "/books/#{books_1.id}"
+    visit "/books/#{book_1.id}"
 
-    expect(page).to have_link("Book Index")
-    expect(page).to have_content(books_1.title)
-    expect(page).to have_content(books_1.checked_out)
-    expect(page).to have_content(books_1.pages)
+    expect(page).to have_content(book_1.title)
+    expect(page).to have_content(book_1.title)
+    expect(page).to have_content(book_1.checked_out)
+    expect(page).to have_content(book_1.pages)
     expect(page).to have_link("Update Book")
     expect(page).to have_link("Delete Book")
   end
@@ -23,17 +23,17 @@ RSpec.describe "books show page" do
     library_1 = Library.create!(name: "Manhattan Library",
                                public: true,
                                years_opened: 200)
-    books_1 = library_1.books.create!(title: "11/22/63",
+    book_1 = library_1.books.create!(title: "11/22/63",
                                       checked_out: false,
                                       pages: 989)
 
-    visit "/books/#{books_1.id}"
+    visit "/books/#{book_1.id}"
 
     expect(page).to have_link("Update Book")
 
     click_link "Update Book"
 
-    expect(current_path).to eq("/books/#{books_1.id}/edit")
+    expect(current_path).to eq("/books/#{book_1.id}/edit")
 
     fill_in('book_title', with: 'A Mind for Numbers')
     check('a_checkbox')
@@ -41,7 +41,7 @@ RSpec.describe "books show page" do
 
     click_button "Submit"
 
-    expect(current_path).to eq("/books/#{books_1.id}")
+    expect(current_path).to eq("/books/#{book_1.id}")
   end
 
   it 'can delete a book' do
@@ -60,5 +60,30 @@ RSpec.describe "books show page" do
 
     expect(current_path).to eq("/books")
     expect(page).to_not have_content("Lord of the Rings Trilogy")
+  end
+
+  it "can display links to books index page and library index page" do
+    library_1 = Library.create!(name: "Harold Washington Library",
+                                public: true,
+                                years_opened: 75)
+    book_1 = library_1.books.create!(title: "To Kill a Mockingbird",
+                                      checked_out: true,
+                                      pages: 487)
+    book_2 = library_1.books.create!(title: "The Handmaid's Tale",
+                                      checked_out: false,
+                                      pages: 227)
+    book_3 = library_1.books.create!(title: "Oryx & Crake",
+                                      checked_out: true,
+                                      pages: 383)
+
+    visit "/books/#{book_1.id}"
+
+    expect(page).to have_link("Books Index")
+    expect(page).to have_link("Library Index")
+    expect(page).to have_link("Update Book")
+    expect(page).to have_link("Delete Book")
+    expect(page).to have_content(book_1.title)
+    expect(page).to have_content(book_1.checked_out)
+    expect(page).to have_content(book_1.pages)
   end
 end
