@@ -63,4 +63,17 @@ RSpec.describe "locations index page" do
 
     expect(current_path).to eq("/locations/#{location_1.id}/edit")
   end
+
+  it "can click the delete link and return to the locations index" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
+
+    visit "/locations"
+    click_link "Delete Location"
+
+    expect(current_path).to eq("/locations/")
+    expect(page).to_not have_content(location_1.name)
+  end
 end
