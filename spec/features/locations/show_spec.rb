@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "locations individual instance show page" do
-  it "can show all of the location's attributes" do
+  it "can show all of the location's attributes including bookstore count" do
     location_1 = Location.create({
       name: "Philadelphia",
       population: 15000000,
@@ -17,6 +17,7 @@ RSpec.describe "locations individual instance show page" do
     expect(page).to have_content(location_1.population)
     expect(page).to have_content(location_1.urban)
     expect(page).to have_content("Number of Bookstores:")
+    expect(page).to have_content("2")
   end
 
   it "can link to a form to edit it's information" do
@@ -51,19 +52,27 @@ RSpec.describe "locations individual instance show page" do
     expect(page).to_not have_content(book_2)
   end
 
-  it "can link to other pages on the web application" do
-    location_1 = Location.create({
-      name: "Philly",
-      population: 16000000,
-      urban: true})
-    visit "/locations/#{location_1.id}/edit"
-    click_on "Bookstores"
+  describe "can link to other pages on the web application" do
+    it "can link to bookstore index page" do
+      location_1 = Location.create({
+        name: "Philly",
+        population: 16000000,
+        urban: true})
+      visit "/locations/#{location_1.id}"
+      click_on "Bookstores"
 
-    expect(current_path).to eq("/bookstores")
+      expect(current_path).to eq("/bookstores")
+    end
 
-    visit "/locations/#{location_1.id}/edit"
-    click_on "Locations"
+    it "can link to the location's bookstores" do
+      location_1 = Location.create({
+        name: "Philly",
+        population: 16000000,
+        urban: true})
+      visit "/locations/#{location_1.id}"
+      click_on "#{location_1.name} Bookstores"
 
-    expect(current_path).to eq("/locations")
+      expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
+    end
   end
 end
