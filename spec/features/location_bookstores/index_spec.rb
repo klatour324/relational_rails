@@ -80,6 +80,8 @@ RSpec.describe "location_bookstores index page" do
     click_on 'Alphabetical Sort'
 
     expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
+    expect(bookstore_3.name).to appear_before(bookstore_1.name, only_text: true)
+    expect(bookstore_1.name).to appear_before(bookstore_2.name, only_text: true)
   end
 
   it "can link to other location in the web app" do
