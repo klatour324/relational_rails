@@ -45,7 +45,6 @@ RSpec.describe "library_books index page" do
 
     visit "/libraries/#{library_1.id}/books"
 
-    expect(page).to have_content("Please enter a number:")
     expect(page).to have_content("Only return records with more than 'n' number of pages")
 
     fill_in('title', with: 300)
@@ -83,9 +82,11 @@ RSpec.describe "library_books index page" do
     click_button('Sort Books Alphabetically')
 
     expect(current_path).to eq("/libraries/#{library_1.id}/books")
-    expect(page).to have_content(book_3.title)
-    expect(page).to have_content(book_1.title)
-    expect(page).to have_content(book_2.title)
+
+    this = (book_3.title)
+    that = (book_2.title)
+
+    expect(this).to appear_before(that)
   end
 
   it 'can update book information from library_books index page' do
