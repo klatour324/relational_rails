@@ -19,18 +19,40 @@ RSpec.describe "location_bookstores index page" do
   end
 
   it "can link to create a new bookstore page" do
-    location_1 = Location.create! ({
-      name: "Philadelphia",
-      population: 15000000,
-      urban: true})
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
 
     visit "/locations/#{location_1.id}/bookstores"
 
-    click_on("New Bookstore")
+    click_on("Create Bookstore")
 
+    expect(current_path).to eq ("/locations/#{location_1.id}/bookstores/new")
     expect(page).to have_field("bs_name")
     expect(page).to have_field("bs_inv")
     expect(page).to have_field("open?")
+  end
+
+  it "can link to update bookstore page" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores"
+
+    click_on("Update Bookstore")
+
+    expect(current_path).to eq ("/bookstores/#{bookstore_1.id}/edit")
+  end
+
+  it "can click a link to delete a bookstore" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores"
+
+    click_on("Delete Bookstore")
+
+    expect(current_path).to eq ("/bookstores")
+    expect(page).to_not have_content(bookstore_1.name)
   end
 
   it "can filter bookstores by input value from user" do
@@ -58,5 +80,20 @@ RSpec.describe "location_bookstores index page" do
     click_on 'Alphabetical Sort'
 
     expect(current_path).to eq("/locations/#{location_1.id}/bookstores")
+  end
+
+  it "can link to other location in the web app" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores"
+    click_on 'Locations'
+
+    expect(current_path).to eq("/locations")
+
+    visit "/locations/#{location_1.id}/bookstores"
+    click_on 'Bookstores'
+
+    expect(current_path).to eq("/bookstores")
   end
 end

@@ -3,7 +3,7 @@
 <a href="/locations">Locations</a>
 <h1><%= @location.name %> Bookstores</h1>
 <br>
-<a href="/locations/<%= @location.id %>/bookstores/new">New Bookstore</a>
+<a href="/locations/<%= @location.id %>/bookstores/new">Create Bookstore</a>
 <br>
 
 <%= form_with(url: "/locations/#{@location.id}/bookstores", method: "get", local: true) do |form| %>
