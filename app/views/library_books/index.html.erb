@@ -2,7 +2,6 @@
 
 <h1><%= @library.name %>'s Books</h1>
 
-<h2>Please enter a number:</h2>
 <%= form_with url: "/libraries/#{@library.id}/books", method: :get, local: :true do |form| %>
   <%= form.label :title, "Only return records with more than 'n' number of pages" %>
   <%= form.number_field :title, id: 'title' %>
