@@ -79,7 +79,7 @@ RSpec.describe "bookstore edit page" do
       expect(page).to have_content(bookstore_1.name)
     end
   end
-  describe "hyperlinks between web app pages"
+  describe "hyperlinks between web app pages" do
     it "can link to locations" do
       location_1 = Location.create! ({
         name: "Philadelphia",
@@ -95,6 +95,7 @@ RSpec.describe "bookstore edit page" do
 
       expect(current_path).to eq ("/locations")
     end
+
     it "can link to bookstores" do
       location_1 = Location.create! ({
         name: "Philadelphia",
@@ -110,4 +111,5 @@ RSpec.describe "bookstore edit page" do
 
       expect(current_path).to eq ("/bookstores")
     end
+  end 
 end

@@ -61,8 +61,8 @@ RSpec.describe "bookstores index page" do
         inventory: 3000,
         open: true})
       visit "/bookstores/"
-      first(:link, "Delete").click
-      
+      first(:link, "Delete Bookstore").click
+
       expect(page).to have_content("All Bookstores")
       expect(page).to have_no_content("Harriett's Bookshop")
     end

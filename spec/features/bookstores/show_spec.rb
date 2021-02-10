@@ -60,4 +60,38 @@ RSpec.describe "bookstore show page" do
     expect(page).to have_content("All Bookstores")
     expect(page).to have_no_content("Harriett's Bookshop")
   end
+
+  describe "hyperlinks between web app pages" do
+    it "can link to locations" do
+      location_1 = Location.create! ({
+        name: "Philadelphia",
+        population: 15000000,
+        urban: true})
+      bookstore_1 = location_1.bookstores.create! ({
+        name: "Harriett's Bookshop",
+        inventory: 3000,
+        open: false})
+
+      visit "/bookstores/#{bookstore_1.id}"
+      click_on("Locations")
+
+      expect(current_path).to eq ("/locations")
+    end
+
+    it "can link to bookstores" do
+      location_1 = Location.create! ({
+        name: "Philadelphia",
+        population: 15000000,
+        urban: true})
+      bookstore_1 = location_1.bookstores.create! ({
+        name: "Harriett's Bookshop",
+        inventory: 3000,
+        open: false})
+
+      visit "/bookstores/#{bookstore_1.id}"
+      click_on("Bookstores")
+
+      expect(current_path).to eq ("/bookstores")
+    end
+  end
 end
