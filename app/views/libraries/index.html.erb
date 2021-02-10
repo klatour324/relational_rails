@@ -2,6 +2,7 @@
 <a href="/libraries/new">New Library</a>
 
 <% @libraries.each do |library| %>
-  <h3><a href="/libraries/<%= library.id %>"><%= library.name %></a></h3>
+  <p><strong><%= library.name %></strong></p>
   <p><%= library.created_at %></p>
+  <a><%= link_to "Update Library", "/libraries/#{library.id}/edit" %></a>
 <% end %>
