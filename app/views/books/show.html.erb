@@ -1,6 +1,6 @@
-<a href="/books">Book Index</a>
+<a href="/books">Books Index</a> | <a href="/libraries">Library Index</a>
 
-<h1><%= @book.title %></h1>
+<h2><%= @book.title %></h2>
 <h3>Checked Out?</h3>
   <%if @book.checked_out == nil %>
     <p><%= false %></p>

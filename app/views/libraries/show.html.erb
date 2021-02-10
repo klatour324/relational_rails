@@ -1,4 +1,6 @@
-<a href="/libraries">Library Index</a>
+<a href="/libraries">Library Index</a> | <a href="/books">Books Index</a> |
+<%= link_to "Library Books Index", "/libraries/#{@library.id}/books" %>
+
 
 <h1><%= @library.name %></h1>
 <h3>Public?</h3>

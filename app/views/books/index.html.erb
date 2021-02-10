@@ -1,6 +1,14 @@
+<a href="/libraries">Library Index</a>
 <h1>All Books</h1>
-<h3><a href="/books/new">New Book</a></h3>
 
 <% @books.each do |book| %>
 <h3><a href="/books/<%= book.id %>"><%= book.title %></a></h3>
+  <h3>Book Title:</h3>
+  <p><strong><%= book.title %></strong></p>
+  <h3>Checked Out?</h3>
+  <p><strong><%= book.checked_out %></strong></p>
+  <h3>Number of Pages:</h3>
+  <p><strong><%= book.pages %></strong></p>
+  <%= link_to "Update Book", "/books/#{book.id}/edit" %> |
+  <%= link_to "Delete Book", "/books/#{book.id}", method: :delete %><br>
 <% end %>
