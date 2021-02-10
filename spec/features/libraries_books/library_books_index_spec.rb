@@ -58,37 +58,37 @@ RSpec.describe "library_books index page" do
       expect(page).to have_content(book_3.title)
       expect(page).to_not have_content(book_1.title)
     end
+  end
 
-    describe 'sort Libray books alphabetically by name' do
-      it 'can sort books alphabetically for a specific library' do
-        library_1 = Library.create!({
-          name: "Chicago Public Library",
-          public: true,
-          years_opened: 150})
-        book_1 = library_1.books.create!({
-          title: "Pachinko",
-          checked_out: true,
-          pages: 254})
-        book_2 = library_1.books.create!({
-          title: "The World's Fair",
-          checked_out: false,
-          pages: 484})
-        book_3 = library_1.books.create!({
-          title: "All About Champagne",
-          checked_out: true,
-          pages: 675})
+  describe 'sort Libray books alphabetically by name' do
+    it 'can sort books alphabetically for a specific library' do
+      library_1 = Library.create!({
+        name: "Chicago Public Library",
+        public: true,
+        years_opened: 150})
+      book_1 = library_1.books.create!({
+        title: "Pachinko",
+        checked_out: true,
+        pages: 254})
+      book_2 = library_1.books.create!({
+        title: "The World's Fair",
+        checked_out: false,
+        pages: 484})
+      book_3 = library_1.books.create!({
+        title: "All About Champagne",
+        checked_out: true,
+        pages: 675})
 
-        visit "/libraries/#{library_1.id}/books"
+      visit "/libraries/#{library_1.id}/books"
 
-        expect(page).to have_button('Sort Books Alphabetically')
+      expect(page).to have_button('Sort Books Alphabetically')
 
-        click_button('Sort Books Alphabetically')
+      click_button('Sort Books Alphabetically')
 
-        expect(current_path).to eq("/libraries/#{library_1.id}/books")
-        expect(page).to have_content(book_3.title)
-        expect(page).to have_content(book_1.title)
-        expect(page).to have_content(book_2.title)
-      end
+      expect(current_path).to eq("/libraries/#{library_1.id}/books")
+      expect(page).to have_content(book_3.title)
+      expect(page).to have_content(book_1.title)
+      expect(page).to have_content(book_2.title)
     end
   end
 end
