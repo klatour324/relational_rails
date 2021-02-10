@@ -50,6 +50,22 @@ RSpec.describe "bookstores index page" do
       expect(page).to_not have_content(bookstore_2.name)
       expect(page).to_not have_content(bookstore_4.name)
     end
+
+    it "can delete the bookstore via the delete link" do
+      location_1 = Location.create! ({
+        name: "Philadelphia",
+        population: 15000000,
+        urban: true})
+      bookstore_1 = location_1.bookstores.create! ({
+        name: "Harriett's Bookshop",
+        inventory: 3000,
+        open: true})
+      visit "/bookstores/"
+      first(:link, "Delete").click
+      
+      expect(page).to have_content("All Bookstores")
+      expect(page).to have_no_content("Harriett's Bookshop")
+    end
   end
 
   describe "hyperlinks to other pages within web application" do
