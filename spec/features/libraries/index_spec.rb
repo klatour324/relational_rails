@@ -39,6 +39,30 @@ RSpec.describe "libraries index page" do
     expect(page).to have_content("Chicago Public Library")
   end
 
+  it "can sort each library by most recently created" do
+    library_1 = Library.create!({
+                name: "Chicago Public Library",
+                public: true,
+                years_opened: 150})
+
+    library_2 = Library.create!({
+                name: "Newberry Library",
+                public: false,
+                years_opened: 75})
+
+    library_3 = Library.create!({
+                name: "Hollywood Hills Library",
+                public: false,
+                years_opened: 75})
+
+    visit "/libraries"
+
+    this = (library_3.name)
+    that = (library_1.name)
+    
+    expect(this).to appear_before(that)
+  end
+
   it "can update a library through individual edit link per library" do
     library_1 = Library.create!({
                 name: "Chicago Public Library",
