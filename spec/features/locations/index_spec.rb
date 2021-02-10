@@ -48,11 +48,19 @@ RSpec.describe "locations index page" do
 
     visit "/locations"
 
-    index_loc3 = page.body.index(location_3.created_at.to_s)
-    index_loc2 = page.body.index(location_2.created_at.to_s)
-    index_loc1 = page.body.index(location_1.created_at.to_s)
+    expect(location_3.name).to appear_before(location_2.name, only_text: true)
+    expect(location_2.name).to appear_before(location_1.name, only_text: true)
+  end
 
-    expect(index_loc3).to be < (index_loc2)
-    expect(index_loc2).to be < (index_loc1)
+  it "can click the link to edit the parents info" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
+
+    visit "/locations"
+    click_link "Edit Info"
+
+    expect(current_path).to eq("/locations/#{location_1.id}/edit")
   end
 end

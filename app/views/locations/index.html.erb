@@ -2,6 +2,6 @@
 
 <a href="/locations/new">New Location</a>
 <% @locations.each do |location| %>
-  <h4><a href="/locations/<%= location.id %>"><%= location.name %></a></h4>
-  <p><%= location.created_at %></p>
+  <h3><a href="/locations/<%= location.id %>"><%= location.name %></a></h3>
+  <p><%= location.created_at %>  <a href="locations/<%= location.id %>/edit">Edit Info</a></p>
 <% end %>
