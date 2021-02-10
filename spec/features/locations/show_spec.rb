@@ -50,4 +50,20 @@ RSpec.describe "locations individual instance show page" do
     expect(page).to_not have_content(book_2)
     expect(page).to_not have_content(book_2)
   end
+
+  it "can link to other pages on the web application" do
+    location_1 = Location.create({
+      name: "Philly",
+      population: 16000000,
+      urban: true})
+    visit "/locations/#{location_1.id}/edit"
+    click_on "Bookstores"
+
+    expect(current_path).to eq("/bookstores")
+
+    visit "/locations/#{location_1.id}/edit"
+    click_on "Locations"
+
+    expect(current_path).to eq("/locations")
+  end
 end

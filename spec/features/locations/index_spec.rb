@@ -76,4 +76,11 @@ RSpec.describe "locations index page" do
     expect(current_path).to eq("/locations/")
     expect(page).to_not have_content(location_1.name)
   end
+
+  it "can link to the bookstores index" do
+    visit "/locations"
+    click_on "Bookstores"
+
+    expect(current_path).to eq("/bookstores")
+  end
 end
