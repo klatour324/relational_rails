@@ -46,4 +46,19 @@ RSpec.describe "location_bookstores new page" do
     expect(page).to have_content(bookstore_2.inventory)
     expect(page).to have_content(bookstore_2.open)
   end
+
+  it "can link to other location in the web app" do
+    location_1 = Location.create! ({ name: "Philadelphia", population: 15000000, urban: true})
+    bookstore_1 = location_1.bookstores.create! ({ name: "JimsBooks", inventory: 3000, open: false})
+
+    visit "/locations/#{location_1.id}/bookstores/new"
+    click_on 'Locations'
+
+    expect(current_path).to eq("/locations")
+
+    visit "/locations/#{location_1.id}/bookstores/new"
+    click_on 'Bookstores'
+
+    expect(current_path).to eq("/bookstores")
+  end
 end
