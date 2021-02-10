@@ -1,7 +1,10 @@
+<a href="/bookstores">Bookstores</a>
+<br><br>
 <h1>All Locations</h1>
 
 <a href="/locations/new">New Location</a>
 <% @locations.each do |location| %>
-  <h4><a href="/locations/<%= location.id %>"><%= location.name %></a></h4>
-  <p><%= location.created_at %></p>
+  <h3><a href="/locations/<%= location.id %>"><%= location.name %></a></h3>
+  <p><%= location.created_at %>  <a href="locations/<%= location.id %>/edit">Edit Info</a></p>
+  <a><%= link_to "Delete Location", "/locations/#{location.id}", method: :delete %></a>
 <% end %>

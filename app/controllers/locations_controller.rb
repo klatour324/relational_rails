@@ -38,7 +38,9 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    Location.destroy(params[:id])
+    @location = Location.find(params[:id])
+    @location.bookstores.destroy_all
+    @location.destroy
     redirect_to '/locations/'
   end
 end

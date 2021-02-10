@@ -30,25 +30,57 @@ RSpec.describe "locations index page" do
     expect(page).to have_content("Enter a new location:")
   end
 
-  it "can create a new record" do
+  it "can order records by created date" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
+    sleep(1)
+    location_2 = Location.create({
+      name: "New York City",
+      population: 35000000,
+      urban: true})
+    sleep(1)
+    location_3 = Location.create! ({
+      name: "Chicago",
+      population: 25000000,
+      urban: true})
+
+    visit "/locations"
+
+    expect(location_3.name).to appear_before(location_2.name, only_text: true)
+    expect(location_2.name).to appear_before(location_1.name, only_text: true)
+  end
+
+  it "can click the link to edit the parents info" do
     location_1 = Location.create({
       name: "Philadelphia",
       population: 15000000,
       urban: true})
 
-    visit "/locations/new"
+    visit "/locations"
+    click_link "Edit Info"
 
-    expect(page).to have_content("Location Name")
-    expect(page).to have_content("Location Population")
-    expect(page).to have_content("Urban?")
+    expect(current_path).to eq("/locations/#{location_1.id}/edit")
+  end
 
-    fill_in("loc_name", with: location_1.name)
-    fill_in("loc_pop", with: location_1.population)
-    check('urban?')
+  it "can click the delete link and return to the locations index" do
+    location_1 = Location.create({
+      name: "Philadelphia",
+      population: 15000000,
+      urban: true})
 
-    click_on("submit")
+    visit "/locations"
+    click_link "Delete Location"
 
-    expect(page).to have_content("All Locations")
-    expect(page).to have_content("All Locations")
+    expect(current_path).to eq("/locations/")
+    expect(page).to_not have_content(location_1.name)
+  end
+
+  it "can link to the bookstores index" do
+    visit "/locations"
+    click_on "Bookstores"
+
+    expect(current_path).to eq("/bookstores")
   end
 end

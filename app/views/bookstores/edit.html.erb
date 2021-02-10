@@ -1,3 +1,7 @@
+<a href="/locations">Locations</a>
+<br>
+<a href="/bookstores">Bookstores</a>
+<br><br>
 <h2><%= @bookstore.name %></h2>
 
 <form action="/bookstores/<%= @bookstore.id %>" method="post">
@@ -10,5 +14,5 @@
   <input type='integer' name='bookstore[inventory]' value="<%= @bookstore.inventory %>" id='bs_inv'/><br/>
   <label for="name">Open?</label><br>
   <input type='checkbox'name='bookstore[open]' id='open?'/><br/>
-  <input type='submit' id='submit'/>
+  <input type='submit' id='submit' value="Update Bookstore"/>
 </form>
