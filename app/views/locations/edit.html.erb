@@ -1,3 +1,7 @@
+<a href="/locations">Locations</a>
+<br>
+<a href="/bookstores">Bookstores</a>
+<br><br>
 <h2><%= @location.name %></h2>
 
 <form action="/locations/<%= @location.id %>" method="post">
@@ -7,7 +11,7 @@
   <label for="name">Location Name</label><br>
   <input type='text' name='location[name]' value="<%= @location.name %>" id='loc_name'/><br/>
   <label for="name">Location Population</label><br>
-  <input type='integer' name='location[population]' value="<%= @location.population %>" id='loc_pop'/><br/>
+  <input type='number' name='location[population]' value="<%= @location.population %>" id='loc_pop'/><br/>
   <label for="name">Urban?</label><br>
   <input type='checkbox'name='location[urban]' id='urban?'/><br/>
   <input type='submit' id='submit'/>

@@ -1,3 +1,7 @@
+<a href="/bookstores">Bookstores</a>
+<br><br>
+<a href="/locations">Locations</a>
+<br>
 <form action="/locations" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Enter a new location:</p>
@@ -7,5 +11,5 @@
   <input type='number' name='location[population]' id='loc_pop'/><br/>
   <label for="name">Urban?</label><br>
   <input type='checkbox' name='location[urban]' id='urban?'/><br/>
-  <input type='submit' id='submit'/>
+  <input type='submit' id='submit' value="Create Location"/>
 </form>
