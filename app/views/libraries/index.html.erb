@@ -1,7 +1,11 @@
+<a href="/books">Books Index</a>
+
 <h1>All Libraries</h1>
-<a href="/libraries/new">New Library</a>
+<h3><a href="/libraries/new">New Library</a></h3>
 
 <% @libraries.each do |library| %>
   <h3><a href="/libraries/<%= library.id %>"><%= library.name %></a></h3>
   <p><%= library.created_at %></p>
+  <%= link_to "Update Library", "/libraries/#{library.id}/edit" %><br>
+  <br><%= link_to "Delete Library", "/libraries/#{library.id}", method: :delete %>
 <% end %>
