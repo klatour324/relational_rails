@@ -6,7 +6,7 @@ describe Book, type: :model do
   end
 
   describe 'class methods' do
-    it '#is_checked_out' do
+    it '::is_checked_out' do
       library_1 = Library.create!({
         name: 'Chicago Public Library',
         public: true,
@@ -28,7 +28,7 @@ describe Book, type: :model do
       expect(Book.is_checked_out).to_not eq([book_3])
     end
 
-    it '#filter_by_pages' do
+    it '::filter_by_pages' do
       library_1 = Library.create!({
           name: 'Logan Square Library',
           public: true,
@@ -50,7 +50,7 @@ describe Book, type: :model do
       expect(Book.filter_by_pages(200)).to_not eq([book_2])
     end
 
-    it '#sort_alphabetically' do
+    it '::sort_alphabetically' do
       library_1 = Library.create!({
         name: 'Logan Square Library',
         public: true,

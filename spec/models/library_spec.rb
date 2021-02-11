@@ -22,7 +22,7 @@ describe Library, type: :model do
       end
     end
 
-    describe '#books_count' do
+    describe '::books_count' do
       it 'can count the number of books associated with a library' do
         library_1 = Library.create({
           name: 'Fredrickson Library',
@@ -41,8 +41,8 @@ describe Library, type: :model do
           public: false,
           years_opened: 0})
 
-        expect(library_1.books_count).to eq 2
-        expect(library_2.books_count).to eq 0
+        expect(library_1.books_count).to eq(2)
+        expect(library_2.books_count).to eq(0)
       end
     end
   end
