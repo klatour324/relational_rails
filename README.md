@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Relational Rails
+#### Katy La Tour, Alexa Morales Smyth
 
-Things you may want to cover:
+A one to many database using Rails 5.2.4x, and Postgres, to create webpages that allow CRUD functionality.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Database Schema](https://gist.github.com/amsmyth1/092fc3ffdeb4f8fcd4da4af438d9e1d5)
